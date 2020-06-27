@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    android:orientation="vertical"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activities.DetailMeetingActivity">
+
+    <ImageView
+        android:layout_marginBottom="5dp"
+        android:id="@+id/iv_ruangan"
+        android:scaleType="centerCrop"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:src="@drawable/meetings" />
+
+    <TextView
+        android:id="@+id/tv_nama_ruangan"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Ball Room"
+        android:padding="10dp"
+        android:textSize="19sp"
+        android:layout_below="@id/iv_ruangan"/>
+
+    <View
+        android:id="@+id/vw1"
+        android:layout_width="match_parent"
+        android:visibility="visible"
+        android:layout_height="3dp"
+        android:background="#BDBBBB"
+        android:layout_below="@id/tv_nama_ruangan"/>
+
+    <TextView
+        android:id="@+id/tv_deskripsi"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Deskripsi"
+        android:padding="10dp"
+        android:textColor="#000"
+        android:textSize="20sp"
+        android:layout_below="@id/vw1"/>
+
+    <TextView
+        android:id="@+id/tv_keterangan"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="sukses"
+        android:padding="10dp"
+        android:textColor="#000"
+        android:textSize="18sp"
+        android:layout_below="@id/tv_deskripsi"/>
+
+    <View
+        android:id="@+id/vw2"
+        android:layout_width="match_parent"
+        android:visibility="visible"
+        android:layout_height="3dp"
+        android:background="#BDBBBB"
+        android:layout_below="@+id/tv_keterangan"/>
+
+
+    <TextView
+        android:id="@+id/tv_harga"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Harga"
+        android:padding="10dp"
+        android:textColor="#000"
+        android:textSize="20sp"
+        android:layout_below="@+id/tv_keterangan"/>
+
+    <TextView
+        android:id="@+id/tv_harga1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="RP. 15000"
+        android:padding="10dp"
+        android:textColor="#000"
+        android:textSize="20sp"
+        android:layout_below="@+id/tv_harga"/>
+
+    <View
+        android:id="@+id/vw3"
+        android:layout_width="match_parent"
+        android:visibility="visible"
+        android:layout_height="3dp"
+        android:background="#BDBBBB"
+        android:layout_below="@id/tv_harga1"/>
+
+    <TextView
+        android:id="@+id/tv_fasilitas"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Fasilitas Gratis"
+        android:padding="10dp"
+        android:textColor="#000"
+        android:textSize="20sp"
+        android:layout_below="@id/tv_harga1"/>
+
+    <TextView
+        android:id="@+id/tv_fasilitas1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="AQUA"
+        android:padding="10dp"
+        android:textSize="18sp"
+        android:layout_below="@id/tv_fasilitas"/>
+
+    <View
+        android:id="@+id/vw4"
+        android:layout_width="match_parent"
+        android:visibility="visible"
+        android:layout_height="3dp"
+        android:background="#BDBBBB"
+        android:layout_below="@id/tv_fasilitas1"/>
+
+    <TextView
+        android:id="@+id/tv_lokasi"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Lokasi"
+        android:padding="10dp"
+        android:textColor="#000"
+        android:textSize="20sp"
+        android:layout_below="@id/vw4"/>
+
+
+    <Button
+        android:id="@+id/btn_pesan_sekarang"
+        android:layout_width="400dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginBottom="20dp"
+        android:background="@drawable/btn_login"
+        android:text="Pesan Sekarang"
+        android:textColor="#ffff"
+        android:textSize="16dp"
+        android:layout_alignParentBottom="true"/>
+
+
+</RelativeLayout>

@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    app:cardCornerRadius="8dp"
+    android:clickable="true"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    app:cardElevation="8dp"
+    android:layout_marginBottom="5dp"
+    android:layout_margin="8dp"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:focusable="true">
+
+    <LinearLayout
+        android:layout_margin="10dp"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <RelativeLayout
+            android:layout_marginBottom="5dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/iv_ruangan"
+                android:scaleType="centerCrop"
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:src="@drawable/meetings" />
+
+            <TextView
+                android:id="@+id/tv_harga"
+                android:padding="5dp"
+                android:layout_margin="8dp"
+                android:textSize="22sp"
+                android:background="@android:color/white"
+                android:text="Rp. 45.000 / Jam"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/tv_nama_mitra"
+            android:layout_marginBottom="8dp"
+            android:textSize="25sp"
+            android:textStyle="bold"
+            android:text="Ball Room"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:id="@+id/tv_nama_ruangan"
+            android:layout_marginBottom="7dp"
+            android:textSize="18sp"
+            android:text="Ruang Meeting"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:id="@+id/tv_kapasitas"
+            android:layout_marginBottom="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="20 0rang"
+            android:textSize="18sp"
+            android:textStyle="bold"/>
+
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>
