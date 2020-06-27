@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@android:color/background_light"
+    tools:context=".ui.order.OrderActivity">
+
+    <ScrollView
+        android:layout_marginBottom="@dimen/margin_size_16"
+        android:layout_above="@id/bottom_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/margin_size_16"
+            android:background="@drawable/btn_bg"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="14dp"
+                android:layout_marginStart="10dp"
+                android:text="Step 1 of 2"
+                android:textColor="#3f4658"
+                android:textSize="16sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="14dp"
+                android:text="Ruangan"
+                android:textColor="#BC3F4658"
+                android:textSize="18sp" />
+
+
+
+            <EditText
+                android:id="@+id/ed_nama_ruangan"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="14dp"
+                android:text="Tanggal"
+                android:textColor="#BC3F4658"
+                android:textSize="18sp" />
+
+            <EditText
+                android:id="@+id/ed_tanggal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="14dp"
+                android:text="Nama"
+                android:textColor="#BC3F4658"
+                android:textSize="18sp" />
+
+            <EditText
+                android:id="@+id/ed_nama_user"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="14dp"
+                android:text="no_hp"
+                android:textColor="#BC3F4658"
+                android:textSize="18sp" />
+
+            <EditText
+                android:id="@+id/ed_nohp_user"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="14dp"
+                android:text="Email"
+                android:textColor="#BC3F4658"
+                android:textSize="18sp" />
+
+            <EditText
+                android:id="@+id/ed_email_user"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="14dp"
+                android:text="Harga"
+                android:textColor="#BC3F4658"
+                android:textSize="18sp" />
+
+            <EditText
+                android:id="@+id/ed_harga"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"/>
+
+            <TextView
+                android:layout_marginBottom="@dimen/margin_size_16"
+                android:drawableEnd="@drawable/ic_keyboard_arrow_right"
+                android:textSize="20sp"
+                android:text="Sekalian Pesan Makanan?"
+                android:id="@+id/txt_pesan_makanan"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+    <RelativeLayout
+        android:id="@+id/bottom_layout"
+        android:background="@color/colorWhite"
+        android:padding="@dimen/padding_size_8"
+        android:layout_alignParentBottom="true"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <Button
+            android:id="@+id/btn_konfirmasi"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:text="@string/confirm"/>
+    </RelativeLayout>
+</RelativeLayout>

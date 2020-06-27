@@ -11,6 +11,12 @@
     <string name="tvnama_lengkap">nama_lengkap</string>
     <string name="tvsimpan">simpan</string>
     <string name="title_profilerofile">profile</string>
+    <string name="hint_date_and_time">Tanggal dan jam</string>
+    <string name="hint_duration">Durasi dalam jam</string>
+    <string name="hint_search">Search</string>
+    <string name="ok">Ok</string>
+    <string name="error_dateAndTime_empty">Pilih tanggal dan waktu terlebih dahulu</string>
+    <string name="error_duration_isEmptyOrZero">Durasi jam tidak boleh kosong atau nol</string>
 
     <string-array name="months">
         <item>Jan</item>
@@ -26,4 +32,23 @@
         <item>Nov</item>
         <item>Des</item>
     </string-array>
+    <string name="title_activity_available_room">Tersedia</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+
+    <string name="hello_first_fragment">Hello first fragment</string>
+    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+    <string name="order_now">Pesan sekarang</string>
+    <string name="location">Lokasi</string>
+    <string name="description">Description</string>
+    <string name="lorem_ipsum">Lorem ipsum dolor sit amet consectuer</string>
+    <string name="price">Harga</string>
+    <string name="facility">Fasilitas</string>
+    <string name="confirm">Konfirmasi</string>
+    <string name="info_selected_product">Selected foods</string>
+    <string name="see">Lihat</string>
+    <string name="close">Tutup</string>
 </resources>

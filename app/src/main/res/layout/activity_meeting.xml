@@ -1,65 +1,54 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activities.MeetingActivity">
+    tools:context=".ui.meeting.MeetingActivity">
 
     <LinearLayout
+        android:padding="@dimen/padding_size_16"
         android:id="@+id/linear_layout_search"
-        app:layout_constraintTop_toTopOf="parent"
         android:layout_width="match_parent"
-        android:layout_height="259dp"
+        android:layout_height="wrap_content"
         android:background="@drawable/btn_top"
-        android:padding="15dp"
-        android:orientation="vertical"
-        android:paddingEnd="12dp"
-        tools:ignore="RtlSymmetry">
+        android:orientation="vertical">
 
-        <TextView
+        <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/tanggal_dan_waktu"
-            android:padding="10dp"
-            android:background="@drawable/btn_bg"
             android:layout_width="match_parent"
-            android:text="  Tanggal"
-            android:textSize="25sp"
-            android:layout_marginBottom="8dp"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:focusable="false"
+            android:clickable="true"
+            android:cursorVisible="false"
+            android:padding="@dimen/padding_size_8"
+            android:background="@drawable/btn_bg"
+            android:hint="@string/hint_date_and_time"
+            android:textSize="@dimen/text_size_18sp"
+            android:layout_marginBottom="@dimen/margin_size_8"/>
 
 
-<!--        <TextView-->
-<!--            android:id="@+id/jam_mulai"-->
-<!--            android:padding="10dp"-->
-<!--            android:background="@drawable/btn_bg"-->
-<!--            android:text="jam mulai"-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:textSize="25sp"-->
-<!--            android:layout_marginBottom="8dp"-->
-<!--            android:layout_height="wrap_content"/>-->
 
-        <EditText
+        <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/ed_lama"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="number"
-            android:padding="10dp"
+            android:inputType="numberSigned"
+            android:padding="@dimen/padding_size_8"
             android:background="@drawable/btn_bg"
-            android:hint="Waktu"
-            android:textSize="25sp"
-            android:layout_marginBottom="8dp"/>
+            android:hint="@string/hint_duration"
+            android:textSize="@dimen/text_size_18sp"
+            android:layout_marginBottom="@dimen/margin_size_8"/>
 
-        <Button
-            android:enabled="false"
+        <com.google.android.material.button.MaterialButton
+            app:cornerRadius="@dimen/corner_radius_16"
             android:id="@+id/btn_search"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginTop="5dp"
-            android:background="@drawable/btn_login"
-            android:text="Cari"
-            android:textColor="#ffff"
-            android:textSize="16sp" />
+            android:text="@string/hint_search"
+            android:textColor="#ffff" />
 
     </LinearLayout>
 
