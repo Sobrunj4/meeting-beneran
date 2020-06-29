@@ -1,7 +1,7 @@
 package com.meeting.tegal
 
-import com.example.meeting.models.Makanan
-import com.example.meeting.models.RuangMeeting
+import com.example.meeting.models.Food
+import com.example.meeting.models.MeetingRoom
 import com.example.meeting.models.User
 import com.example.meeting.utilities.Constants
 import com.example.meeting.utilities.WrappedListResponse
@@ -42,9 +42,7 @@ class ApiClient {
 
 interface ApiService{
     @GET("ruangmeeting")
-    fun getRuangMeeting(
-        @Header("Authorization") token : String
-    ) : Call<WrappedListResponse<RuangMeeting>>
+    fun getMeetingRooms(@Header("Authorization") token : String) : Call<WrappedListResponse<MeetingRoom>>
 
     @FormUrlEncoded
     @POST("ruangmeeting/search")
@@ -52,7 +50,7 @@ interface ApiService{
         @Header("Authorization") token : String,
         @Field("tanggal_dan_waktu") tanggalDanWaktu : String,
         @Field("lama") lama : String
-    ) : Call<WrappedListResponse<RuangMeeting>>
+    ) : Call<WrappedListResponse<MeetingRoom>>
 
     @FormUrlEncoded
     @POST("user/login")
@@ -79,7 +77,7 @@ interface ApiService{
     fun getMakanan(
         @Header("Authorization") token : String,
         @Path("id_mitra") id_mitra : Int
-    ) : Call<WrappedListResponse<Makanan>>
+    ) : Call<WrappedListResponse<Food>>
 }
 
 

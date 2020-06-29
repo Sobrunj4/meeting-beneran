@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView
+<com.google.android.material.card.MaterialCardView
     app:cardCornerRadius="8dp"
     android:clickable="true"
     xmlns:android="http://schemas.android.com/apk/res/android"
     app:cardElevation="8dp"
-    android:layout_marginBottom="5dp"
-    android:layout_margin="8dp"
+    app:strokeColor="@android:color/background_dark"
+    app:strokeWidth="@dimen/stroke_size_1"
+    android:layout_margin="@dimen/margin_size_4"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:focusable="true">
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <LinearLayout
         android:layout_margin="10dp"
@@ -69,4 +69,4 @@
 
     </LinearLayout>
 
-</androidx.cardview.widget.CardView>
+</com.google.android.material.card.MaterialCardView>
