@@ -56,6 +56,4 @@ class MeetingRepository (private val api: ApiService) : MeetingContract {
             }
         })
     }
-
-
 }

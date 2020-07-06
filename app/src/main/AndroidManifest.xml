@@ -12,10 +12,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".ui.detail_harga.DetailHargaActivity"></activity>
         <activity
             android:name=".ui.available_room.AvailableRoomActivity"
             android:label="@string/title_activity_available_room"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".ui.food_order.SelectFoodActivity" />
         <activity android:name=".ui.order.OrderActivity" />
         <activity android:name=".ui.password.PasswordActivity" />

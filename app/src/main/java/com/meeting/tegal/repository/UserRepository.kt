@@ -62,6 +62,4 @@ class UserRepository (private val api : ApiService) : UserContract {
             }
         })
     }
-
-
 }

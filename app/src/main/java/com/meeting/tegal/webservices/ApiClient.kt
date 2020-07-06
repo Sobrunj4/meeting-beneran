@@ -6,7 +6,10 @@ import com.example.meeting.models.User
 import com.example.meeting.utilities.Constants
 import com.example.meeting.utilities.WrappedListResponse
 import com.example.meeting.utilities.WrappedResponse
+import com.meeting.tegal.models.CreateOrder
+import com.meeting.tegal.models.Order
 import okhttp3.OkHttpClient
+import okhttp3.RequestBody
 import retrofit2.Call
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
@@ -78,6 +81,12 @@ interface ApiService{
         @Header("Authorization") token : String,
         @Path("id_mitra") id_mitra : Int
     ) : Call<WrappedListResponse<Food>>
+
+
+    @Headers("Content-Type: application/json")
+    @POST("order")
+    fun order(
+        @Header("Authorization") token : String,
+        @Body body : RequestBody
+    ) : Call<WrappedResponse<CreateOrder>>
 }
-
-

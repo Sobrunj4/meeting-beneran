@@ -10,7 +10,5 @@ data class Food(
     @SerializedName("nama") var name : String? = null,
     @SerializedName("harga") var price : Int? = null,
     @SerializedName("foto") var image : String?= null,
-
-    var isChecked : Boolean = false,
-    var qty : Int? = 0
+    @SerializedName("qty") var qty : Int? = 0
 ) : Parcelable

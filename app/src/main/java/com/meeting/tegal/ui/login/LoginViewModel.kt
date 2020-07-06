@@ -9,21 +9,10 @@ import com.meeting.tegal.utilities.SingleResponse
 class LoginViewModel (private val userRepository: UserRepository): ViewModel(){
     private val state: SingleLiveEvent<LoginState> = SingleLiveEvent()
 
-    private fun setLoading(){
-        state.value = LoginState.Loading(true)
-    }
-
-    private fun hideLoading(){
-        state.value = LoginState.Loading(false)
-    }
-
-    private fun toast(message: String){
-        state.value = LoginState.ShowToast(message)
-    }
-
-    private fun success(token: String){
-        state.value = LoginState.Success(token)
-    }
+    private fun setLoading(){ state.value = LoginState.Loading(true) }
+    private fun hideLoading(){ state.value = LoginState.Loading(false) }
+    private fun toast(message: String){ state.value = LoginState.ShowToast(message) }
+    private fun success(token: String){ state.value = LoginState.Success(token) }
 
     fun login(email: String, password: String){
         setLoading()

@@ -3,6 +3,7 @@ package com.meeting.tegal
 import android.app.Application
 import com.meeting.tegal.repository.FoodRepository
 import com.meeting.tegal.repository.MeetingRepository
+import com.meeting.tegal.repository.OrderRepository
 import com.meeting.tegal.repository.UserRepository
 import com.meeting.tegal.ui.available_room.AvailableRoomViewModel
 import com.meeting.tegal.ui.food_order.SelectFoodActivity
@@ -36,6 +37,7 @@ val repositoryModules = module {
     factory { UserRepository(get()) }
     factory { FoodRepository(get()) }
     factory { MeetingRepository(get()) }
+    factory { OrderRepository(get()) }
 }
 
 val viewModelModules = module {

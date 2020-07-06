@@ -140,6 +140,3 @@ class SelectFoodActivity : AppCompatActivity(), FoodClickInterface{
         }
     }
 }
-
-@Parcelize
-data class OrderMakananResult(var idMakanan : List<Int> = mutableListOf(), var totalMakanan : List<Int> = mutableListOf()) : Parcelable

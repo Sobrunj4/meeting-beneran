@@ -1,5 +1,6 @@
 package com.meeting.tegal.ui.order
 
+import android.annotation.SuppressLint
 import android.app.Activity
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -11,16 +12,16 @@ import com.example.meeting.models.User
 import com.example.meeting.utilities.Constants
 import com.meeting.tegal.R
 import com.meeting.tegal.extenstions.hidden
+import com.meeting.tegal.models.CreateOrder
+import com.meeting.tegal.models.Order
 import com.meeting.tegal.ui.food_order.SelectFoodActivity
 import com.meeting.tegal.utilities.toast
 import kotlinx.android.synthetic.main.activity_order.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class OrderActivity : AppCompatActivity() {
-    companion object{
-        const val REQUEST_CODE_PESAN_MAKANAN = 101
-    }
-
+    companion object{ const val REQUEST_CODE_PESAN_MAKANAN = 101 }
+    private var restrucutureFoods : ArrayList<Food> = arrayListOf()
     private val orderViewModel : OrderActivityViewModel by viewModel()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -29,7 +30,16 @@ class OrderActivity : AppCompatActivity() {
         observe()
         fill()
         selectFoodForResult()
-
+        btn_konfirmasi.setOnClickListener {
+            val order = CreateOrder(
+                dateAndTIme = getPassedDateAndTime(),
+                duration = getPassedDuration(),
+                harga = getPassedRoom()?.harga_sewa,
+                id_room = getPassedRoom()?.id,
+                foods = restrucutureFoods
+            )
+            orderViewModel.order(Constants.getToken(this@OrderActivity), order)
+        }
     }
 
     private fun observe(){
@@ -43,6 +53,8 @@ class OrderActivity : AppCompatActivity() {
     private fun handleState(state: OrderActivityState){
         when(state){
             is OrderActivityState.Loading -> isLoading(state.isLoading)
+            is OrderActivityState.ShowToast -> toast(state.message)
+            is OrderActivityState.Success -> finish()
         }
     }
 
@@ -58,7 +70,6 @@ class OrderActivity : AppCompatActivity() {
         ed_nama_user.setText(it.nama)
         ed_nohp_user.setText(it.no_hp)
         ed_email_user.setText(it.email)
-
     }
 
     private fun onSelectFoodsReturn(foods: List<Food>){
@@ -71,9 +82,9 @@ class OrderActivity : AppCompatActivity() {
         if (resultCode == Activity.RESULT_OK && requestCode == REQUEST_CODE_PESAN_MAKANAN){
             val foods = data?.getParcelableArrayListExtra<Food>("selected_foods")
             foods?.let {
-                onSelectFoodsReturn(it as List<Food>)
+                onSelectFoodsReturn(it)
             }
-
+            restrucutureFoods = foods!!
         }
     }
 
@@ -81,6 +92,7 @@ class OrderActivity : AppCompatActivity() {
     private fun getPassedDateAndTime() = intent.getStringExtra("TANGGAL_DAN_WAKTU")
     private fun getPassedDuration() = intent.getStringExtra("LAMA")
 
+    @SuppressLint("SetTextI18n")
     private fun fill(){
         getPassedRoom()?.let { room ->
             ed_nama_ruangan.hidden()

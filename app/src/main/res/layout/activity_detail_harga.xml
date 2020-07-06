@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    android:orientation="vertical"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.detail_meeting.DetailMeetingActivity">
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:padding="@dimen/padding_size_16"
+                    android:textAllCaps="true"
+                    android:id="@+id/tv_harga_rungan"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/price" />
+
+                <TextView
+                    android:layout_marginStart="200sp"
+                    android:id="@+id/tv_harga1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="RP. 15000"
+                    android:layout_gravity="right"
+                    android:textSize="@dimen/text_size_18sp"
+                    android:textColor="@color/colorBlack"
+                    android:padding="@dimen/padding_size_16"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+            <TextView
+                android:padding="@dimen/padding_size_16"
+                android:textAllCaps="true"
+                android:id="@+id/makanan_dan_minuman"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/price" />
+
+            <TextView
+                android:layout_marginStart="200sp"
+                android:id="@+id/tv_makanan_dan"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="RP. 15000"
+                android:layout_gravity="right"
+                android:textSize="@dimen/text_size_18sp"
+                android:textColor="@color/colorBlack"
+                android:padding="@dimen/padding_size_16"
+                tools:ignore="RtlHardcoded" />
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+</RelativeLayout>
