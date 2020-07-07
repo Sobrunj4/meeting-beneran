@@ -1,6 +1,107 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<RelativeLayout
+    android:orientation="vertical"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.detail_meeting.DetailMeetingActivity">
 
-</LinearLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:layout_marginBottom="5dp"
+                android:id="@+id/iv_ruangan"
+                android:scaleType="centerCrop"
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:src="@drawable/meetings" />
+
+            <TextView
+                android:padding="@dimen/padding_size_16"
+                android:id="@+id/tv_nama_ruangan"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Ball Room"
+                android:textColor="@color/colorBlack"
+                android:textStyle="bold"
+                android:textSize="@dimen/text_size_18sp"/>
+
+            <View
+                android:background="@color/colorDivider"
+                android:id="@+id/vw1"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/divider"/>
+
+            <TextView
+                android:textAllCaps="true"
+                android:id="@+id/tv_deskripsi"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Alamat"
+                android:padding="@dimen/padding_size_16"/>
+
+            <TextView
+                android:id="@+id/tv_keterangan"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/lorem_ipsum"
+                android:padding="@dimen/padding_size_16"
+                android:textColor="#000"
+                android:textSize="18sp"/>
+
+            <View
+                android:background="@color/colorDivider"
+                android:id="@+id/vw2"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/divider"/>
+
+            <TextView
+                android:padding="@dimen/padding_size_16"
+                android:textAllCaps="true"
+                android:id="@+id/tv_total_harga"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="total harga" />
+
+            <TextView
+                android:id="@+id/tv_harga1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="RP. 15000"
+                android:textSize="@dimen/text_size_18sp"
+                android:textColor="@color/colorBlack"
+                android:padding="@dimen/padding_size_16"/>
+
+
+        </LinearLayout>
+
+    </ScrollView>
+
+    <RelativeLayout
+        android:layout_alignParentBottom="true"
+        android:background="@color/colorWhite"
+        android:padding="@dimen/padding_size_8"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_bayar_sekarang"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@drawable/btn_login"
+            android:text="bayar sekarang" />
+    </RelativeLayout>
+
+
+
+</RelativeLayout>

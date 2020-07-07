@@ -14,6 +14,7 @@ import com.meeting.tegal.R
 import com.meeting.tegal.extenstions.hidden
 import com.meeting.tegal.models.CreateOrder
 import com.meeting.tegal.models.Order
+import com.meeting.tegal.ui.detail_harga.DetailHargaActivity
 import com.meeting.tegal.ui.food_order.SelectFoodActivity
 import com.meeting.tegal.utilities.toast
 import kotlinx.android.synthetic.main.activity_order.*
@@ -31,14 +32,12 @@ class OrderActivity : AppCompatActivity() {
         fill()
         selectFoodForResult()
         btn_konfirmasi.setOnClickListener {
-            val order = CreateOrder(
-                dateAndTIme = getPassedDateAndTime(),
-                duration = getPassedDuration(),
-                harga = getPassedRoom()?.harga_sewa,
-                id_room = getPassedRoom()?.id,
-                foods = restrucutureFoods
-            )
-            orderViewModel.order(Constants.getToken(this@OrderActivity), order)
+            startActivity(Intent(this@OrderActivity, DetailHargaActivity::class.java).apply {
+                putExtra("DATEANDTIME", getPassedDateAndTime())
+                putExtra("DURATION", getPassedDuration())
+                putExtra("ROOM", getPassedRoom())
+                putExtra("FOODS", restrucutureFoods)
+            })
         }
     }
 

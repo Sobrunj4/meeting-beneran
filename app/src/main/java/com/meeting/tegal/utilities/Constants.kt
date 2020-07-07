@@ -40,8 +40,20 @@ class Constants {
 
         fun convertCalendarToFormattedDate(calendar: Calendar) : String {
             val year = calendar.get(Calendar.YEAR)
-            val month = calendar.get(Calendar.MONTH).plus(1)
-            val day = calendar.get(Calendar.DAY_OF_MONTH)
+            //val month = calendar.get(Calendar.MONTH).plus(1)
+            val month = if (calendar.get(Calendar.MONTH).plus(1) < 10){
+                val temp = calendar.get(Calendar.MONTH).plus(1)
+                "0$temp"
+            }else{
+                calendar.get(Calendar.MONTH).plus(1)
+            }
+            //val day = calendar.get(Calendar.DAY_OF_MONTH)
+            val day = if (calendar.get(Calendar.DAY_OF_MONTH) < 10){
+                val temp = calendar.get(Calendar.DAY_OF_MONTH)
+                "0$temp"
+            }else{
+                calendar.get(Calendar.DAY_OF_MONTH).plus(1)
+            }
             val hour = if (calendar.get(Calendar.HOUR_OF_DAY) < 10) {
                 val temp = calendar.get(Calendar.HOUR_OF_DAY).toString()
                 "0$temp"

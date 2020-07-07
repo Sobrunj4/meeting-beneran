@@ -46,7 +46,7 @@ class MeetingRepository (private val api: ApiService) : MeetingContract {
                         if(response.body()?.status!!){
                             listener.onSuccess(response.body()?.data)
                         }else{
-                            listener.onFailure(Error("No data"))
+                            listener.onFailure(Error(response.body()?.message))
                         }
                     }
                     !response.isSuccessful -> {

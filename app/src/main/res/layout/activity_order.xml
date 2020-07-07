@@ -137,10 +137,13 @@
         android:layout_alignParentBottom="true"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
+
         <Button
+            android:drawableEnd="@drawable/ic_keyboard_arrow_right"
             android:id="@+id/btn_konfirmasi"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            android:text="@string/confirm"/>
+            android:text="lanjutkan"/>
     </RelativeLayout>
+
 </RelativeLayout>

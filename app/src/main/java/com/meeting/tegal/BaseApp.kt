@@ -6,6 +6,7 @@ import com.meeting.tegal.repository.MeetingRepository
 import com.meeting.tegal.repository.OrderRepository
 import com.meeting.tegal.repository.UserRepository
 import com.meeting.tegal.ui.available_room.AvailableRoomViewModel
+import com.meeting.tegal.ui.detail_harga.DetailHargaViewModel
 import com.meeting.tegal.ui.food_order.SelectFoodActivity
 import com.meeting.tegal.ui.food_order.SelectFoodViewModel
 import com.meeting.tegal.ui.login.LoginViewModel
@@ -46,4 +47,5 @@ val viewModelModules = module {
     viewModel { AvailableRoomViewModel(get()) }
     viewModel { OrderActivityViewModel(get(), get()) }
     viewModel { SelectFoodViewModel(get()) }
+    viewModel { DetailHargaViewModel(get()) }
 }

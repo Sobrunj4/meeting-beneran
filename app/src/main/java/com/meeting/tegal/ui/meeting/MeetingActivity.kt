@@ -52,14 +52,12 @@ class MeetingActivity : AppCompatActivity(), DatePickerDialog.OnDateSetListener,
     private fun setCalendarTimeValue(hour: Int, minute: Int) = meetingViewModel.setCalendarTimeValue(hour, minute)
     private fun handleCurrentCalendar(calendar: Calendar?) = setTextOfDateField(calendar)
 
-
     private fun setTextOfDateField(calendar: Calendar?){
         if(calendar != null)
             tanggal_dan_waktu.setText(Constants.convertCalendarToFormattedDate(calendar))
         else
             tanggal_dan_waktu.text?.clear()
     }
-
 
     override fun onDateSet(view: DatePicker?, year: Int, month: Int, dayOfMonth: Int) {
         val calendar = Calendar.getInstance()
@@ -73,7 +71,6 @@ class MeetingActivity : AppCompatActivity(), DatePickerDialog.OnDateSetListener,
         }
         timePickerDialog.show()
     }
-
 
     @SuppressLint("SetTextI18n")
     override fun onTimeSet(view: TimePicker?, hourOfDay: Int, minute: Int) {
