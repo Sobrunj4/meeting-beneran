@@ -62,6 +62,7 @@ class DetailHargaActivity : AppCompatActivity() {
                 duration = getPassedDuration(),
                 harga = getPassedRoom()?.harga_sewa,
                 id_room = getPassedRoom()?.id,
+                id_partner = getPassedRoom()?.partner!!.id,
                 foods = getPassedFoodsSelected()!!
             )
             detailHargaViewModel.order(Constants.getToken(this@DetailHargaActivity), order)

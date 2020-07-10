@@ -100,8 +100,6 @@ class OrderActivity : AppCompatActivity() {
             ed_harga.setText(room.harga_sewa.toString())
             ed_tanggal.hidden()
             ed_tanggal.setText("${getPassedDateAndTime()} / ${getPassedDuration()} jam")
-
-
         }
     }
 

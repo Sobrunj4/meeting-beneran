@@ -10,8 +10,10 @@ import com.meeting.tegal.ui.detail_harga.DetailHargaViewModel
 import com.meeting.tegal.ui.food_order.SelectFoodActivity
 import com.meeting.tegal.ui.food_order.SelectFoodViewModel
 import com.meeting.tegal.ui.login.LoginViewModel
+import com.meeting.tegal.ui.main.shopping.ShoppingViewModel
 import com.meeting.tegal.ui.meeting.MeetingViewModel
 import com.meeting.tegal.ui.order.OrderActivityViewModel
+import com.meeting.tegal.ui.register.RegisterViewModel
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
 import org.koin.androidx.viewmodel.dsl.viewModel
@@ -48,4 +50,6 @@ val viewModelModules = module {
     viewModel { OrderActivityViewModel(get(), get()) }
     viewModel { SelectFoodViewModel(get()) }
     viewModel { DetailHargaViewModel(get()) }
+    viewModel { ShoppingViewModel(get()) }
+    viewModel { RegisterViewModel(get()) }
 }

@@ -1,8 +1,8 @@
 <resources>
     <string name="app_name">MeetingTegal</string>
     <string name="title_home">Home</string>
-    <string name="title_dashboard">Dashboard</string>
-    <string name="title_profile">profile</string>
+    <string name="title_order">Order</string>
+    <string name="title_profile">Profile</string>
     <string name="tvLogout">tvlogout</string>
     <string name="tvprofile">Profile</string>
     <string name="tvpassword">Password</string>
@@ -51,4 +51,6 @@
     <string name="info_selected_product">Selected foods</string>
     <string name="see">Lihat</string>
     <string name="close">Tutup</string>
+    <string name="title_Order">order</string>
+    <string name="title_shopping">shopping</string>
 </resources>

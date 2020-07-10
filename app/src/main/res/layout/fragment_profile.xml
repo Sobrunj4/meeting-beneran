@@ -56,7 +56,7 @@
                 android:layout_width="match_parent"
                 android:visibility="visible"
                 android:layout_height="3dp"
-                android:background="#BDBBBB"/>
+                android:background="#D8D6D6"/>
 
         </LinearLayout>
 
@@ -67,22 +67,30 @@
             android:orientation="vertical"
             android:padding="16dp">
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+            <ImageView
+                android:src="@drawable/ic_profile"
+                android:layout_width="35dp"
+                android:layout_height="match_parent"/>
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="profile"
                 android:textColor="#000"
                 android:padding="10dp"
-                android:textSize="20sp">
-            </TextView>
-
-            <View
-                android:layout_width="match_parent"
-                android:visibility="visible"
-                android:layout_height="3dp"
-                android:background="#BDBBBB"/>
+                android:textSize="20sp"/>
+            </LinearLayout>
+<!--            <View-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:visibility="visible"-->
+<!--                android:layout_height="3dp"-->
+<!--                android:background="#BDBBBB"/>-->
 
         </LinearLayout>
+
         <LinearLayout
             android:id="@+id/Password"
             android:layout_width="match_parent"
@@ -90,6 +98,14 @@
             android:orientation="vertical"
             android:padding="16dp">
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+            <ImageView
+                android:src="@drawable/ic_lock_black"
+                android:layout_width="35dp"
+                android:layout_height="match_parent"/>
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -98,12 +114,13 @@
                 android:textColor="#000"
                 android:textSize="20sp">
             </TextView>
+            </LinearLayout>
 
-            <View
-                android:layout_width="match_parent"
-                android:visibility="visible"
-                android:layout_height="3dp"
-                android:background="#BDBBBB"/>
+<!--            <View-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:visibility="visible"-->
+<!--                android:layout_height="3dp"-->
+<!--                android:background="#BDBBBB"/>-->
 
         </LinearLayout>
         <LinearLayout
@@ -112,7 +129,16 @@
             android:orientation="vertical"
             android:padding="16dp">
 
-            <TextView
+            <LinearLayout
+                android:id="@+id/btn_logout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <ImageView
+                    android:src="@drawable/ic_logout"
+                    android:layout_width="35dp"
+                    android:layout_height="match_parent"/>
+                <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Logout"
@@ -120,18 +146,14 @@
                 android:padding="10dp"
                 android:textSize="20sp">
             </TextView>
+            </LinearLayout>
 
-            <View
-                android:layout_width="match_parent"
-                android:visibility="visible"
-                android:layout_height="3dp"
-                android:background="#BDBBBB"/>
+<!--            <View-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:visibility="visible"-->
+<!--                android:layout_height="3dp"-->
+<!--                android:background="#BDBBBB"/>-->
 
         </LinearLayout>
-
-
     </LinearLayout>
-
-
-
 </LinearLayout>

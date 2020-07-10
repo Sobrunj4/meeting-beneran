@@ -1,5 +1,6 @@
 package com.meeting.tegal.repository
 
+import com.example.meeting.utilities.WrappedListResponse
 import com.example.meeting.utilities.WrappedResponse
 import com.google.gson.GsonBuilder
 import com.meeting.tegal.ApiService
@@ -36,6 +37,50 @@ class OrderRepository (private val api : ApiService) {
                     result(false, Error(response.message()))
                 }
             }
+        })
+    }
+
+    fun getOrderByUser(token: String, result: (List<Order>?, Error?) -> Unit){
+        api.getOrderByUser(token).enqueue(object : Callback<WrappedListResponse<Order>>{
+            override fun onFailure(call: Call<WrappedListResponse<Order>>, t: Throwable) {
+                result(null, Error(t.message))
+            }
+
+            override fun onResponse(call: Call<WrappedListResponse<Order>>, response: Response<WrappedListResponse<Order>>) {
+                if (response.isSuccessful){
+                    val body = response.body()
+                    if (body?.status!!){
+                        val data = body.data
+                        result(data, null)
+                    }else{
+                        result(null, Error())
+                    }
+                }else{
+                    result(null, Error(response.message()))
+                }
+            }
+        })
+    }
+
+    fun updateStatus(token : String, id : String, status : String, result: (Boolean, Error?) -> Unit){
+        api.updateStatus(token, id.toInt(), status).enqueue(object : Callback<WrappedResponse<Order>>{
+            override fun onFailure(call: Call<WrappedResponse<Order>>, t: Throwable) {
+                result(false, Error(t.message))
+            }
+
+            override fun onResponse(call: Call<WrappedResponse<Order>>, response: Response<WrappedResponse<Order>>) {
+                if (response.isSuccessful){
+                    val body = response.body()
+                    if (body?.status!!){
+                        result(true, null)
+                    }else{
+                        result(false, Error(body.message))
+                    }
+                }else{
+                    result(false, Error(response.message()))
+                }
+            }
+
         })
     }
 }

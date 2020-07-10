@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView
+    app:cardCornerRadius="8dp"
+    android:layout_marginStart="8dp"
+    android:layout_marginEnd="8dp"
+    android:layout_marginBottom="3dp"
+    android:clickable="true"
+    android:focusable="true"
+    app:cardUseCompatPadding="true"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_margin="10dp"
+            android:id="@+id/linear_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/iv_ruangan"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:layout_marginBottom="5dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/meetings" />
+
+            <TextView
+                android:id="@+id/tv_nama_ruangan"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/padding_size_16"
+                android:text="Ball Room"
+                android:textColor="@color/colorBlack"
+                android:textSize="@dimen/text_size_18sp"
+                android:textStyle="bold" />
+
+            <View
+                android:id="@+id/vw1"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/divider"
+                android:background="@color/colorDivider" />
+
+            <TextView
+                android:id="@+id/tv_alamat"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/padding_size_16"
+                android:text="Alamat"
+                android:textAllCaps="true" />
+
+            <TextView
+                android:id="@+id/tv_keterangan"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/padding_size_16"
+                android:text="@string/lorem_ipsum"
+                android:textColor="#000"
+                android:textSize="18sp" />
+
+            <View
+                android:id="@+id/vw2"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/divider"
+                android:background="@color/colorDivider" />
+
+            <TextView
+                android:id="@+id/label_total_harga"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/padding_size_16"
+                android:text="total harga"
+                android:textAllCaps="true" />
+
+            <TextView
+                android:id="@+id/tv_total_harga"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/padding_size_16"
+                android:text="RP. 15000"
+                android:textColor="@color/colorBlack"
+                android:textSize="@dimen/text_size_18sp" />
+        </LinearLayout>
+
+        <com.google.android.material.button.MaterialButton
+            android:layout_marginEnd="10dp"
+            android:layout_alignParentEnd="true"
+            android:layout_below="@id/linear_layout"
+            android:text="lanjutkan pembayaran"
+            android:id="@+id/btn_pay"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+    </RelativeLayout>
+</com.google.android.material.card.MaterialCardView>

@@ -89,4 +89,17 @@ interface ApiService{
         @Header("Authorization") token : String,
         @Body body : RequestBody
     ) : Call<WrappedResponse<CreateOrder>>
+
+    @GET("order/user")
+    fun getOrderByUser(
+        @Header("Authorization") token : String
+    ) : Call<WrappedListResponse<Order>>
+
+    @FormUrlEncoded
+    @POST("order/{id}/update")
+    fun updateStatus(
+        @Header("Authorization") token : String,
+        @Path("id") id : Int,
+        @Field("status") status : String
+    ): Call<WrappedResponse<Order>>
 }

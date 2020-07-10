@@ -12,10 +12,35 @@ import retrofit2.Response
 interface UserContract {
     fun profile(token: String, listener: SingleResponse<User>)
     fun login(email: String, password: String, listener: SingleResponse<User>)
+    fun register(name : String, email: String, password: String, telp : String, listener: SingleResponse<User>)
 }
 
 class UserRepository (private val api : ApiService) : UserContract {
+
     private val TAG = "UserRep"
+
+    override fun register(name: String, email: String, password: String, telp: String, listener: SingleResponse<User>) {
+        api.register(name, email, password, telp).enqueue(object : Callback<WrappedResponse<User>>{
+            override fun onFailure(call: Call<WrappedResponse<User>>, t: Throwable) {
+                listener.onFailure(Error(t.message))
+            }
+
+            override fun onResponse(call: Call<WrappedResponse<User>>, response: Response<WrappedResponse<User>>) {
+                when{
+                    response.isSuccessful -> {
+                        val body = response.body()
+                        if (body?.status!!){
+                            listener.onSuccess(body.data)
+                        }else{
+                            listener.onFailure(Error("maaf, register gagal"))
+                        }
+                    }
+                    !response.isSuccessful -> listener.onFailure(Error(response.message()))
+                }
+            }
+
+        })
+    }
 
     override fun profile(token: String, listener: SingleResponse<User>) {
         api.profile(token).enqueue(object : Callback<WrappedResponse<User>>{

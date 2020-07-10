@@ -8,7 +8,7 @@ import androidx.fragment.app.Fragment
 import com.meeting.tegal.R
 import com.meeting.tegal.ui.main.home.HomeFragment
 import com.meeting.tegal.ui.main.profile.ProfileFragment
-import com.meeting.tegal.fragments.ShoppingFragment
+import com.meeting.tegal.ui.main.shopping.ShoppingFragment
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {

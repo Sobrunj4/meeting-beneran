@@ -10,6 +10,7 @@ apply plugin: 'kotlin-kapt'
 android {
     compileSdkVersion 29
     buildToolsVersion "29.0.3"
+    flavorDimensions "mode"
     defaultConfig {
         applicationId "com.meeting.tegal"
         minSdkVersion 22
@@ -17,6 +18,12 @@ android {
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+    productFlavors {
+        sandBox {
+            applicationId "com.meeting.tegal"
+            buildConfigField "String", "CLIENT_KEY", '"SB-Mid-client-HnyREhmFqx_LW8Bi"'
+        }
     }
     buildTypes {
         release {
@@ -63,6 +70,7 @@ dependencies {
     implementation 'androidx.navigation:navigation-fragment-ktx:2.0.0'
     implementation 'androidx.navigation:navigation-ui-ktx:2.0.0'
 
+    implementation 'com.midtrans:uikit:1.21.2-SANDBOX'
     //koin di
     implementation 'org.koin:koin-androidx-viewmodel:2.0.1'
 }

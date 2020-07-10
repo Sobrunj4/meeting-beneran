@@ -10,11 +10,12 @@
 
 
     <ScrollView
+        android:layout_marginBottom="@dimen/margin_size_16"
+        android:layout_above="@id/bottom_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
         <LinearLayout
-
             android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
@@ -113,34 +114,30 @@
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/divider"/>
 
-            <TextView
-                android:textAllCaps="true"
-                android:padding="@dimen/padding_size_16"
-                android:id="@+id/tv_lokasi"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/location"/>
+<!--            <TextView-->
+<!--                android:textAllCaps="true"-->
+<!--                android:padding="@dimen/padding_size_16"-->
+<!--                android:id="@+id/tv_lokasi"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:text="@string/location"/>-->
         </LinearLayout>
-
     </ScrollView>
 
-
-
-
     <RelativeLayout
-        android:layout_alignParentBottom="true"
+        android:id="@+id/bottom_layout"
         android:background="@color/colorWhite"
         android:padding="@dimen/padding_size_8"
+        android:layout_alignParentBottom="true"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-        <com.google.android.material.button.MaterialButton
+
+        <Button
+            android:drawableEnd="@drawable/ic_keyboard_arrow_right"
             android:id="@+id/btn_pesan_sekarang"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            android:background="@drawable/btn_login"
-            android:text="@string/order_now" />
+            android:text="Pesan Sekarang"/>
     </RelativeLayout>
-
-
 
 </RelativeLayout>
