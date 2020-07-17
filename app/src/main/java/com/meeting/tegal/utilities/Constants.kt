@@ -52,7 +52,7 @@ class Constants {
                 val temp = calendar.get(Calendar.DAY_OF_MONTH)
                 "0$temp"
             }else{
-                calendar.get(Calendar.DAY_OF_MONTH).plus(1)
+                calendar.get(Calendar.DAY_OF_MONTH)
             }
             val hour = if (calendar.get(Calendar.HOUR_OF_DAY) < 10) {
                 val temp = calendar.get(Calendar.HOUR_OF_DAY).toString()

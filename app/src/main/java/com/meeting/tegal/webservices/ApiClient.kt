@@ -44,6 +44,10 @@ class ApiClient {
 }
 
 interface ApiService{
+
+    @GET("partner/all")
+    fun fetchPartners(@Header("Authorization") token : String) : Call<WrappedListResponse<Partner>>
+
     @GET("ruangmeeting")
     fun getMeetingRooms(@Header("Authorization") token : String) : Call<WrappedListResponse<MeetingRoom>>
 

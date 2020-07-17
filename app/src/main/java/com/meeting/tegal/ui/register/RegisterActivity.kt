@@ -73,7 +73,7 @@ class RegisterActivity : AppCompatActivity() {
     private fun setNameError(err : String?){ til_name.error = err }
     private fun setEmailError(err : String?){ til_email.error = err }
     private fun setPasswordError(err : String?){ til_password.error = err }
-    private fun setConfirmPasswordError(err : String?){ til_password.error = err }
+    private fun setConfirmPasswordError(err : String?){ til_confirm_password.error = err }
     private fun setTelpError(err : String?){ til_telp.error = err }
     private fun toast(message : String) = Toast.makeText(this, message, Toast.LENGTH_LONG).show()
     private fun success(email : String) {

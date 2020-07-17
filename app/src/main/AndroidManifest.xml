@@ -4,6 +4,8 @@
     package="com.meeting.tegal">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+
 
     <application
         android:name=".BaseApp"
@@ -14,7 +16,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme.NoActionBar"
         tools:replace="android:allowBackup">
-<!--        <activity android:name=".ui.Keranjang.KeranjangActivity"></activity>-->
+        <activity android:name=".ui.maps.MapsActivity"></activity>
         <activity android:name=".ui.detail_harga.DetailHargaActivity" />
         <activity
             android:name=".ui.available_room.AvailableRoomActivity"

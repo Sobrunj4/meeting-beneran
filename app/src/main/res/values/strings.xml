@@ -17,6 +17,7 @@
     <string name="ok">Ok</string>
     <string name="error_dateAndTime_empty">Pilih tanggal dan waktu terlebih dahulu</string>
     <string name="error_duration_isEmptyOrZero">Durasi jam tidak boleh kosong atau nol</string>
+    <string name="map_box_access_token">pk.eyJ1Ijoic29icnVuIiwiYSI6ImNrY2FiN2l1czFlcTQzMm4wb2E2YTBwbnYifQ.w6sIAs-_094-BeoY-OHtKQ</string>
 
     <string-array name="months">
         <item>Jan</item>

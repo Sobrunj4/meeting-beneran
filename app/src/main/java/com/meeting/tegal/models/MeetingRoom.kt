@@ -2,6 +2,7 @@ package com.example.meeting.models
 
 import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
+import com.meeting.tegal.Partner
 import kotlinx.android.parcel.Parcelize
 
 @Parcelize

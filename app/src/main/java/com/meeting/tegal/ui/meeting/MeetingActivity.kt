@@ -9,6 +9,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.DatePicker
 import android.widget.TimePicker
+import android.widget.Toast
 import androidx.lifecycle.Observer
 import com.example.meeting.utilities.Constants
 import com.meeting.tegal.R
@@ -38,6 +39,7 @@ class MeetingActivity : AppCompatActivity(), DatePickerDialog.OnDateSetListener,
             val month = calendar.get(Calendar.MONTH)
             val day = calendar.get(Calendar.DAY_OF_MONTH)
             val datePickerDialog = DatePickerDialog(this, this, year, month, day)
+            datePickerDialog.datePicker.minDate = calendar.timeInMillis
             datePickerDialog.show()
         }
     }

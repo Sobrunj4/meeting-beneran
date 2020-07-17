@@ -8,6 +8,7 @@ import com.meeting.tegal.utilities.SingleResponse
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import retrofit2.http.HTTP
 
 interface UserContract {
     fun profile(token: String, listener: SingleResponse<User>)
@@ -80,8 +81,11 @@ class UserRepository (private val api : ApiService) : UserContract {
                         }
                     }
                     !response.isSuccessful -> {
-                        Log.d(TAG, response.message())
-                        listener.onFailure(Error(response.message()))
+                        if(response.code() == 401){
+                            listener.onFailure(Error("Login gagal"))
+                        }else{
+                            listener.onFailure(Error(response.message()))
+                        }
                     }
                 }
             }

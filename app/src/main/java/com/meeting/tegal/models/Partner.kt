@@ -1,4 +1,4 @@
-package com.example.meeting.models
+package com.meeting.tegal
 
 import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
@@ -15,5 +15,7 @@ data class Partner(
     @SerializedName("nama_rekening") var nama_rekening: String? = null,
     @SerializedName("nama_akun_bank") var nama_akun_bank: String? = null,
     @SerializedName("alamat") var alamat: String? = null,
+    @SerializedName("lat") var lat: String? = null,
+    @SerializedName("lng") var lng: String? = null,
     @SerializedName("status") var status: Boolean? = false
 ) : Parcelable

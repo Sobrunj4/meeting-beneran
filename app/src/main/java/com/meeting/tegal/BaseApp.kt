@@ -1,16 +1,14 @@
 package com.meeting.tegal
 
 import android.app.Application
-import com.meeting.tegal.repository.FoodRepository
-import com.meeting.tegal.repository.MeetingRepository
-import com.meeting.tegal.repository.OrderRepository
-import com.meeting.tegal.repository.UserRepository
+import com.meeting.tegal.repository.*
 import com.meeting.tegal.ui.available_room.AvailableRoomViewModel
 import com.meeting.tegal.ui.detail_harga.DetailHargaViewModel
 import com.meeting.tegal.ui.food_order.SelectFoodActivity
 import com.meeting.tegal.ui.food_order.SelectFoodViewModel
 import com.meeting.tegal.ui.login.LoginViewModel
 import com.meeting.tegal.ui.main.shopping.ShoppingViewModel
+import com.meeting.tegal.ui.maps.MapsViewModel
 import com.meeting.tegal.ui.meeting.MeetingViewModel
 import com.meeting.tegal.ui.order.OrderActivityViewModel
 import com.meeting.tegal.ui.register.RegisterViewModel
@@ -41,11 +39,13 @@ val repositoryModules = module {
     factory { FoodRepository(get()) }
     factory { MeetingRepository(get()) }
     factory { OrderRepository(get()) }
+    factory { PartnerRepository(get()) }
 }
 
 val viewModelModules = module {
     viewModel { LoginViewModel(get()) }
     viewModel { MeetingViewModel() }
+    viewModel { MapsViewModel(get()) }
     viewModel { AvailableRoomViewModel(get()) }
     viewModel { OrderActivityViewModel(get(), get()) }
     viewModel { SelectFoodViewModel(get()) }

@@ -32,6 +32,14 @@ class LoginActivity : AppCompatActivity() {
             is LoginState.Loading -> isLoading(it.isLoading)
             is LoginState.ShowToast -> toast(it.message)
             is LoginState.Success -> handleSuccess(it.token)
+            is LoginState.Validate -> {
+                it.email?.let { setEmailError(it) }
+                it.password?.let { setPasswordError(it) }
+            }
+            is LoginState.Reset -> {
+                setEmailError(null)
+                setPasswordError(null)
+            }
         }
     }
 
@@ -51,7 +59,9 @@ class LoginActivity : AppCompatActivity() {
         btn_login.setOnClickListener {
             val email = ed_email.text.toString().trim()
             val password = ed_password.text.toString().trim()
-            loginViewModel.login(email, password)
+            if (loginViewModel.validate(email, password)){
+                loginViewModel.login(email, password)
+            }
         }
     }
 
@@ -62,4 +72,7 @@ class LoginActivity : AppCompatActivity() {
             finish()
         }
     }
+
+    private fun setEmailError(err : String?) { til_email.error = err }
+    private fun setPasswordError(err : String?) { til_password.error = err }
 }

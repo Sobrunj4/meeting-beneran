@@ -3,9 +3,9 @@ package com.meeting.tegal.models
 import android.os.Parcelable
 import com.example.meeting.models.Food
 import com.example.meeting.models.MeetingRoom
-import com.example.meeting.models.Partner
 import com.example.meeting.models.User
 import com.google.gson.annotations.SerializedName
+import com.meeting.tegal.Partner
 import kotlinx.android.parcel.Parcelize
 
 @Parcelize

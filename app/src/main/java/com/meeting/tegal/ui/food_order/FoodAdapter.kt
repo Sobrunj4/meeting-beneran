@@ -14,9 +14,13 @@ class FoodAdapter(private val foods: MutableList<Food>, private val foodInterfac
         fun bind(food: Food){
             with(itemView){
                 food_name.text = food.name
+                food_quantity.text = food.qty.toString()
                 food_price.text  = Constants.setToIDR(food.price!!)
-                setOnClickListener {
-                    foodInterface.click(food)
+                food_increment_button.setOnClickListener {
+                    foodInterface.increment(food)
+                }
+                food_decrement_button.setOnClickListener {
+                    foodInterface.decrement(food)
                 }
             }
         }

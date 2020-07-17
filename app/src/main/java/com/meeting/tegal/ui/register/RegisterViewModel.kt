@@ -19,40 +19,49 @@ class RegisterViewModel (private val userRepository: UserRepository) : ViewModel
     fun validate(name: String, email: String, password: String, confirmPassowrd: String, telp: String) : Boolean {
         reset()
         if (name.isEmpty()){
-            state.value = RegisterState.ShowToast("nama tidak boleh kosong")
+            state.value = RegisterState.Validate(name = "nama tidak boleh kosong")
             return false
         }
         if (name.length < 5){
-            state.value = RegisterState.ShowToast("nama setidaknya 5 karakter")
+            state.value = RegisterState.Validate(name = "nama setidaknya 5 karakter")
             return false
         }
-        if (telp.isEmpty()){
-            state.value = RegisterState.ShowToast("no telepon harus di isi")
-        }
-        if (telp.length in 14 downTo 10){
-            state.value = RegisterState.ShowToast("no telepon setidaknya 11 sampai 13 karakter")
-        }
 
-        if (email.isEmpty() || password.isEmpty()){
-            state.value = RegisterState.ShowToast("mohon isi semua form")
+        if (email.isEmpty()){
+            state.value = RegisterState.Validate(email = "email tidak boleh kosong")
             return false
         }
         if (!Constants.isValidEmail(email)){
             state.value = RegisterState.Validate(email = "email tidak valid")
             return false
         }
+
+        if(password.isEmpty()){
+            state.value = RegisterState.Validate(password = "password tidak boleh kosong")
+            return false
+        }
+
         if (!Constants.isValidPassword(password)){
-            state.value = RegisterState.Validate(password = "password tidak valid")
+            state.value = RegisterState.Validate(password = "password minimal 8 karakter")
             return false
         }
         if (confirmPassowrd.isEmpty()){
-            state.value = RegisterState.ShowToast("Isi semua form terlebih dahulu")
+            state.value = RegisterState.Validate(confirmPassowrd = "konfirmasi password tidak boleh kosong")
             return false
         }
-        if(!confirmPassowrd.equals(password)){
-            state.value = RegisterState.Validate(confirmPassowrd = "Konfirmasi password tidak cocok")
+        if(confirmPassowrd != password){
+            state.value = RegisterState.Validate(confirmPassowrd = "konfirmasi password tidak cocok")
             return false
         }
+        if (telp.isEmpty()){
+            state.value = RegisterState.Validate( telp = "no telepon tidak boleh kosong")
+            return false
+        }
+        if (telp.length < 10 || telp.length > 13){
+            state.value = RegisterState.Validate(telp = "no telepon setidaknya 11 sampai 13 karakter")
+            return false
+        }
+
         return true
     }
 
