@@ -27,8 +27,9 @@ data class Order(
 
 data class CreateOrder(
     @SerializedName("id") var id : Int? = null,
-    @SerializedName("tanggal_dan_waktu") var dateAndTIme : String? = null,
-    @SerializedName("durasi") var duration : String? = null,
+    @SerializedName("tanggal") var date : String? = null,
+    @SerializedName("start_time") var startTime : String? = null,
+    @SerializedName("end_time") var endTime : String? = null,
     @SerializedName("harga") var harga : Int? = null,
     @SerializedName("id_room") var id_room : Int?= null,
     @SerializedName("id_mitra") var id_partner : Int?= null,

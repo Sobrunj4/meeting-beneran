@@ -1,5 +1,6 @@
 package com.meeting.tegal.ui.available_room
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -13,9 +14,10 @@ import kotlinx.android.synthetic.main.item_meeting.view.*
 class AvailableRoomAdapter (private val rooms: MutableList<MeetingRoom>, private val availableRoomInterface: AvailableRoomInterface) : RecyclerView.Adapter<AvailableRoomAdapter.ViewHolder>(){
 
     inner class ViewHolder(itemview: View) : RecyclerView.ViewHolder(itemview){
+        @SuppressLint("SetTextI18n")
         fun bind(room: MeetingRoom){
             with(itemView){
-                tv_nama_mitra.text = room.partner.nama_mitra
+                //tv_nama_mitra.text = room.partner.nama_mitra
                 tv_nama_ruangan.text = room.nama_tempat
                 tv_kapasitas.text = "${room.kapasitas} Orang"
                 tv_harga.text = "${Constants.setToIDR(room.harga_sewa!!)}/Jam"

@@ -17,6 +17,7 @@ class OrderRepository (private val api : ApiService) {
     fun order(token : String, createOrder: CreateOrder, result : (Boolean, Error?)->Unit){
         val g = GsonBuilder().create()
         val json = g.toJson(createOrder)
+        println(json)
         val body = RequestBody.create(MediaType.parse("application/json; charset=utf-8"), json)
         api.order(token, body).enqueue(object : Callback<WrappedResponse<CreateOrder>>{
             override fun onFailure(call: Call<WrappedResponse<CreateOrder>>, t: Throwable) {
@@ -25,13 +26,11 @@ class OrderRepository (private val api : ApiService) {
 
             override fun onResponse(call: Call<WrappedResponse<CreateOrder>>, response: Response<WrappedResponse<CreateOrder>>) {
                 if (response.isSuccessful){
-                    val body = response.body()
-                    if (body?.status!!) {
-                        println(body.data)
-                        println(body.message)
+                    val b = response.body()
+                    if (b?.status!!) {
                         result(true, null)
                     }else{
-                        result(false, Error(body.message))
+                        result(false, Error(b.message))
                     }
                 }else{
                     result(false, Error(response.message()))

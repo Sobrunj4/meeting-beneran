@@ -24,7 +24,6 @@ class LoginActivity : AppCompatActivity() {
     }
 
     private fun observe() = observeState()
-
     private fun observeState() = loginViewModel.listenToState().observer(this, Observer { handleUI(it) })
 
     private fun handleUI(it : LoginState){
@@ -45,10 +44,17 @@ class LoginActivity : AppCompatActivity() {
 
     private fun handleSuccess(token: String){
         Constants.setToken(this@LoginActivity, "Bearer $token")
-        goToMainActivity()
+        if (getExpectResult()){
+            finish()
+        }else{
+            startActivity(Intent(this@LoginActivity, MainActivity::class.java).apply {
+                flags = Intent.FLAG_ACTIVITY_CLEAR_TASK
+                flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
+            }).also { finish() }
+        }
     }
 
-    private fun goToMainActivity() = startActivity(Intent(this@LoginActivity, MainActivity::class.java)).also { finish() }
+    private fun getExpectResult() = intent.getBooleanExtra("EXPECT_RESULT", false)
 
 
     private fun isLoading(b: Boolean){

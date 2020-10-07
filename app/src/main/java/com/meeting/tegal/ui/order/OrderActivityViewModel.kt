@@ -1,5 +1,6 @@
 package com.meeting.tegal.ui.order
 
+import android.annotation.SuppressLint
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.meeting.models.Food
@@ -12,6 +13,8 @@ import com.meeting.tegal.repository.OrderRepository
 import com.meeting.tegal.repository.UserRepository
 import com.meeting.tegal.utilities.ArrayResponse
 import com.meeting.tegal.utilities.SingleResponse
+import java.text.SimpleDateFormat
+import java.util.*
 
 class OrderActivityViewModel (private val orderRepository: OrderRepository, private val userRepository: UserRepository) : ViewModel(){
     private val user = MutableLiveData<User>()
@@ -19,10 +22,28 @@ class OrderActivityViewModel (private val orderRepository: OrderRepository, priv
     private val state : SingleLiveEvent<OrderActivityState> = SingleLiveEvent()
     private val selectedFoods = MutableLiveData<List<Food>?>()
 
+    private val currentSelectedDate = MutableLiveData<String>()
+    private val currentSelectedStartTime = MutableLiveData<String>()
+    private val currentSelectedEndTime = MutableLiveData<String>()
+
     private fun setLoading(){ state.value = OrderActivityState.Loading(true) }
     private fun hideLoading(){ state.value = OrderActivityState.Loading(false) }
     private fun toast(message : String) { state.value = OrderActivityState.ShowToast(message) }
 
+    @SuppressLint("SimpleDateFormat")
+    fun setCurrentDate(myCalendar: Calendar){
+        val myFormat = "yyy-MM-dd"
+        val sdf = SimpleDateFormat(myFormat, Locale.US)
+        currentSelectedDate.value = sdf.format(myCalendar.time)
+    }
+
+    fun setCurrentStartTime(hour: Int, minute: Int) {
+        currentSelectedStartTime.value = "$hour:$minute"
+    }
+
+    fun setCurrentEndTime(hour: Int, minute: Int) {
+        currentSelectedEndTime.value = "$hour:$minute"
+    }
 
     fun setSelectedFoods(foods: List<Food>){
         foods.forEach {
@@ -57,6 +78,9 @@ class OrderActivityViewModel (private val orderRepository: OrderRepository, priv
 
     fun listenToState() = state
     fun listenToUser() = user
+    fun listenToCurrentStartTime() = currentSelectedStartTime
+    fun listenToCurrentEndTime() = currentSelectedEndTime
+    fun listenToCurrentDate() = currentSelectedDate
 }
 
 sealed class OrderActivityState {

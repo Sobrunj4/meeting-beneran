@@ -28,19 +28,19 @@ class HomeViewModel (private val partnerRepository: PartnerRepository) : ViewMod
         })
     }
 
-    fun fetchPartnersPromo(){
-        isLoading(true)
-        partnerRepository.fetchPartnersPromo(object : ArrayResponse<Partner>{
-            override fun onSuccess(datas: List<Partner>?) {
-                isLoading(false)
-                datas?.let { partners.postValue(it) }
-            }
-
-            override fun onFailure(err: Error?) {
-                isLoading(false)
-                err?.let { toast(it.message.toString()) }
-            }
-        })
+    fun fetchPartnersPromo() {
+        //isLoading(true)
+//        partnerRepository.fetchPartnersPromo(object : ArrayResponse<Partner>{
+//            override fun onSuccess(datas: List<Partner>?) {
+//                isLoading(false)
+//                datas?.let { partners.postValue(it) }
+//            }
+//
+//            override fun onFailure(err: Error?) {
+//                isLoading(false)
+//                err?.let { toast(it.message.toString()) }
+//            }
+//        })
     }
 
     fun listenToState() = state

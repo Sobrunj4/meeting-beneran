@@ -23,7 +23,7 @@
 
             <ImageView
                 android:src="@drawable/company"
-                android:id="@+id/img_company"
+                android:id="@+id/img_room"
                 android:layout_width="match_parent"
                 android:layout_height="170dp"/>
 
@@ -35,7 +35,7 @@
             android:textStyle="bold"
             android:textSize="18sp"
             android:text="jabjasjna"
-            android:id="@+id/txt_company_name"
+            android:id="@+id/txt_room_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
 
@@ -43,7 +43,15 @@
             android:layout_marginStart="16dp"
             android:textSize="16sp"
             android:text="jabjasjna"
-            android:id="@+id/txt_company_address"
+            android:id="@+id/txt_room_capacity"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:layout_marginStart="16dp"
+            android:textSize="16sp"
+            android:text="jabjasjna"
+            android:id="@+id/txt_room_price"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
 

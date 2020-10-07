@@ -46,8 +46,6 @@ class SelectFoodActivity : AppCompatActivity(), FoodClickInterface{
         }
     }
 
-    private fun getPassedIdPartner() = intent.getStringExtra("ID_MITRA")
-
 
     private fun setupRecyclerView(){
         rv_foods.apply {
@@ -89,6 +87,8 @@ class SelectFoodActivity : AppCompatActivity(), FoodClickInterface{
             loading.gone()
         }
     }
+
+    private fun getPassedIdPartner() = intent.getStringExtra("ID_MITRA")
 
     override fun click(food: Food) = foodViewModel.addSelectedProduct(food)
     override fun increment(food: Food)  = foodViewModel.incrementQuantity(food)

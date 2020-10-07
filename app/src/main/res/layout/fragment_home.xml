@@ -15,7 +15,7 @@
 
         <com.google.android.material.textfield.TextInputLayout
             app:boxBackgroundColor="@android:color/transparent"
-            android:layout_margin="16dp"
+            android:layout_margin="8dp"
             android:background="@android:color/white"
             android:id="@+id/til_search"
             app:errorEnabled="true"
@@ -37,10 +37,12 @@
     <LinearLayout
         android:id="@+id/linear_promo"
         android:orientation="vertical"
-        android:layout_margin="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginTop="10dp"
         android:layout_below="@id/lineaer_search"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="250dp">
 
         <TextView
             android:textStyle="bold"
@@ -65,7 +67,9 @@
 
     <LinearLayout
         android:orientation="vertical"
-        android:layout_margin="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginTop="10dp"
         android:layout_below="@id/linear_promo"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">

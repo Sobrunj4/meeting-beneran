@@ -2,7 +2,6 @@
 <RelativeLayout
     android:orientation="vertical"
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -34,7 +33,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Ball Room"
-                android:textColor="@color/colorBlack"
+                android:textColor="@android:color/black"
                 android:textStyle="bold"
                 android:textSize="@dimen/text_size_18sp"/>
 
@@ -82,7 +81,7 @@
                 android:layout_height="wrap_content"
                 android:text="RP. 15000"
                 android:textSize="@dimen/text_size_18sp"
-                android:textColor="@color/colorBlack"
+                android:textColor="@android:color/black"
                 android:padding="@dimen/padding_size_16"/>
 
             <View
@@ -105,7 +104,7 @@
                 android:layout_height="wrap_content"
                 android:text="AQUA"
                 android:textSize="@dimen/text_size_18sp"
-                android:textColor="@color/colorBlack"
+                android:textColor="@android:color/black"
                 android:padding="@dimen/padding_size_16"/>
 
             <View
@@ -113,14 +112,6 @@
                 android:id="@+id/vw4"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/divider"/>
-
-<!--            <TextView-->
-<!--                android:textAllCaps="true"-->
-<!--                android:padding="@dimen/padding_size_16"-->
-<!--                android:id="@+id/tv_lokasi"-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:text="@string/location"/>-->
         </LinearLayout>
     </ScrollView>
 

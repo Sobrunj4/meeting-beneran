@@ -45,11 +45,21 @@ class ApiClient {
 
 interface ApiService{
 
-    @GET("partner/all")
+    @GET("partner")
     fun fetchPartners() : Call<WrappedListResponse<Partner>>
 
-    @GET("partner/promo")
-    fun fetchPartnersPromo() : Call<WrappedListResponse<Partner>>
+    @GET("room/promo")
+    fun fetchRoomsPromo() : Call<WrappedListResponse<MeetingRoom>>
+
+    @GET("room/{id_partner}")
+    fun fetchRoomsByPartner(
+        @Path("id_partner") idPartner : Int
+    ) : Call<WrappedListResponse<MeetingRoom>>
+
+    @GET("food/{id_partner}")
+    fun fetchFoodsByPartner(
+        @Path("id_partner") idPartner : Int
+    ) : Call<WrappedListResponse<Food>>
 
 
 

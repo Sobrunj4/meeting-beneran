@@ -4,13 +4,16 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.meeting.models.Food
 import com.example.meeting.models.MeetingRoom
 import com.example.meeting.utilities.Constants
+import com.meeting.tegal.Partner
 import com.meeting.tegal.R
 import com.meeting.tegal.models.CreateOrder
+import com.meeting.tegal.ui.login.LoginActivity
 import com.meeting.tegal.ui.main.MainActivity
 import com.meeting.tegal.utilities.disable
 import com.meeting.tegal.utilities.enable
@@ -57,30 +60,48 @@ class DetailHargaActivity : AppCompatActivity() {
 
     private fun order(){
         btn_order.setOnClickListener {
-            val order = CreateOrder(
-                dateAndTIme = getPassedDateAndTime(),
-                duration = getPassedDuration(),
-                harga = getPassedRoom()?.harga_sewa,
-                id_room = getPassedRoom()?.id,
-                id_partner = getPassedRoom()?.partner!!.id,
-                foods = getPassedFoodsSelected()!!
-            )
-            detailHargaViewModel.order(Constants.getToken(this@DetailHargaActivity), order)
+            if (isLoggedIn()){
+                val token = Constants.getToken(this@DetailHargaActivity)
+                val order = CreateOrder(
+                    date = getPassedDate(),
+                    startTime = getPassedStartTime(),
+                    endTime = getPassedEndTime(),
+                    harga = getPassedRoom()?.harga_sewa,
+                    id_room = getPassedRoom()?.id,
+                    id_partner = getPassedCompany()?.id,
+                    foods = getPassedFoodsSelected()!!
+                )
+                detailHargaViewModel.order(Constants.getToken(this@DetailHargaActivity), order)
+            }else{
+                alertNotLogin("silahkan login dahulu")
+            }
         }
+    }
+
+    fun alertNotLogin(message: String){
+        AlertDialog.Builder(this).apply {
+            setMessage(message)
+            setPositiveButton("ya"){dialogInterface, _ ->
+                startActivity(Intent(this@DetailHargaActivity, LoginActivity::class.java)
+                    .putExtra("EXPECT_RESULT", true))
+                dialogInterface.dismiss()
+            }
+        }.show()
     }
 
     private fun setUI() {
         txt_harga_ruangan.text = Constants.setToIDR(getPassedRoom()?.harga_sewa!!)
-        val priceFoods = getPassedFoodsSelected()?.sumBy {
-            it.price!! * it.qty!!
-        }
+        val priceFoods = getPassedFoodsSelected()?.sumBy { it.price!! * it.qty!! }
         txt_harga_makanan.text = Constants.setToIDR(priceFoods!!)
         txt_total_harga.text = Constants.setToIDR(getPassedRoom()!!.harga_sewa!!.plus(priceFoods))
     }
 
-    private fun getPassedRoom() : MeetingRoom? = intent.getParcelableExtra("ROOM")
-    private fun getPassedDateAndTime() = intent.getStringExtra("DATEANDTIME")
-    private fun getPassedDuration() = intent.getStringExtra("DURATION")
+    private fun isLoggedIn() = Constants.getToken(this@DetailHargaActivity) != "UNDEFINED"
+    private fun getPassedRoom() = intent.getParcelableExtra<MeetingRoom>("ROOM")
+    private fun getPassedCompany() = intent.getParcelableExtra<Partner>("COMPANY")
+    private fun getPassedDate() = intent.getStringExtra("DATE")
+    private fun getPassedStartTime() = intent.getStringExtra("START_TIME")
+    private fun getPassedEndTime() = intent.getStringExtra("END_TIME")
     private fun getPassedFoodsSelected() : List<Food>? = intent.getParcelableArrayListExtra("FOODS")
     private fun toast(message : String) = Toast.makeText(this, message, Toast.LENGTH_LONG).show()
 }

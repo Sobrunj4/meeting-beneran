@@ -13,6 +13,5 @@ data class MeetingRoom(
     @SerializedName("harga_sewa") var harga_sewa: Int? = null,
     @SerializedName("foto") var foto: String? = null,
     @SerializedName("keterangan") var keterangan: String? = null,
-    @SerializedName("status") var status: Boolean? = null,
-    @SerializedName("mitra") var partner : Partner
+    @SerializedName("status") var status: Boolean? = null
 ) : Parcelable

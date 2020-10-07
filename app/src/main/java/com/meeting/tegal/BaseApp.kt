@@ -3,6 +3,7 @@ package com.meeting.tegal
 import android.app.Application
 import com.meeting.tegal.repository.*
 import com.meeting.tegal.ui.available_room.AvailableRoomViewModel
+import com.meeting.tegal.ui.company.CompanyViewModel
 import com.meeting.tegal.ui.detail_harga.DetailHargaViewModel
 import com.meeting.tegal.ui.food_order.SelectFoodActivity
 import com.meeting.tegal.ui.food_order.SelectFoodViewModel
@@ -54,4 +55,5 @@ val viewModelModules = module {
     viewModel { ShoppingViewModel(get()) }
     viewModel { RegisterViewModel(get()) }
     viewModel { HomeViewModel(get()) }
+    viewModel { CompanyViewModel(get()) }
 }

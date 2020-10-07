@@ -20,9 +20,9 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        observe()
         setUpRecyclerViewPartner()
-        setUpRecyclerViewPromo()
+        observe()
+        //setUpRecyclerViewPromo()
     }
 
     private fun setUpRecyclerViewPartner(){
@@ -32,7 +32,7 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
         }
     }
 
-    private fun setUpRecyclerViewPromo(){
+    private fun setUpRecyclerViewPromo() {
         requireView().recycler_promo.apply {
             adapter = HomeAdapter(mutableListOf(), requireActivity())
             layoutManager = LinearLayoutManager(requireActivity(), LinearLayoutManager.HORIZONTAL, false)
@@ -47,16 +47,15 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
     private fun observePartners() = homeViewModel.listenToPartners().observe(viewLifecycleOwner, Observer { handlePartners(it) })
     private fun observeState() = homeViewModel.listenToState().observe(viewLifecycleOwner, Observer { handleUiState(it) })
     private fun fetchOwners() = homeViewModel.fetchPartners()
-    private fun fetchPromo() = homeViewModel.fetchPartnersPromo()
 
     private fun handlePartners(list: List<Partner>?) {
         list?.let {
             requireView().recycler_company.adapter?.let { adapter ->
                 if (adapter is HomeAdapter) adapter.changeList(it)
             }
-            requireView().recycler_promo.adapter?.let { adapter ->
-                if (adapter is HomeAdapter) adapter.changeList(it)
-            }
+//            requireView().recycler_promo.adapter?.let { adapter ->
+//                if (adapter is HomeAdapter) adapter.changeList(it)
+//            }
         }
     }
 
@@ -74,6 +73,6 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
     override fun onResume() {
         super.onResume()
         fetchOwners()
-        fetchPromo()
+        //fetchPromo()
     }
 }
