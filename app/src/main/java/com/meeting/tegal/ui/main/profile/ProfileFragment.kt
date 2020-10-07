@@ -13,13 +13,13 @@ import kotlinx.android.synthetic.main.fragment_profile.*
 
 class ProfileFragment : Fragment(R.layout.fragment_profile){
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        profile.setOnClickListener {
-            startActivity(Intent(activity, EditProfileActivity::class.java))
-        }
-
-        Password.setOnClickListener {
-            startActivity(Intent(activity, PasswordActivity::class.java))
-        }
+//        profile.setOnClickListener {
+//            startActivity(Intent(activity, EditProfileActivity::class.java))
+//        }
+//
+//        Password.setOnClickListener {
+//            startActivity(Intent(activity, PasswordActivity::class.java))
+//        }
         btn_logout.setOnClickListener {
             Constants.clearToken(activity!!)
         startActivity(Intent(activity!!, LoginActivity::class.java))

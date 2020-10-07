@@ -7,6 +7,7 @@ import com.meeting.tegal.ui.detail_harga.DetailHargaViewModel
 import com.meeting.tegal.ui.food_order.SelectFoodActivity
 import com.meeting.tegal.ui.food_order.SelectFoodViewModel
 import com.meeting.tegal.ui.login.LoginViewModel
+import com.meeting.tegal.ui.main.home.HomeViewModel
 import com.meeting.tegal.ui.main.shopping.ShoppingViewModel
 import com.meeting.tegal.ui.maps.MapsViewModel
 import com.meeting.tegal.ui.meeting.MeetingViewModel
@@ -52,4 +53,5 @@ val viewModelModules = module {
     viewModel { DetailHargaViewModel(get()) }
     viewModel { ShoppingViewModel(get()) }
     viewModel { RegisterViewModel(get()) }
+    viewModel { HomeViewModel(get()) }
 }

@@ -1,6 +1,5 @@
 package com.meeting.tegal.ui.meeting
 
-
 import android.annotation.SuppressLint
 import android.app.DatePickerDialog
 import android.app.TimePickerDialog
@@ -9,7 +8,6 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.DatePicker
 import android.widget.TimePicker
-import android.widget.Toast
 import androidx.lifecycle.Observer
 import com.example.meeting.utilities.Constants
 import com.meeting.tegal.R

@@ -67,11 +67,13 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="12dp"
+                    android:backgroundTint="@android:color/black"
                     android:drawableEnd="@drawable/ic"
                     android:hint="Masukkan Email Password"
                     android:textColor="#111" />
 
             </com.google.android.material.textfield.TextInputLayout>
+
 
             <TextView
                 android:layout_width="wrap_content"
@@ -92,21 +94,22 @@
                 <com.google.android.material.textfield.TextInputEditText
                     android:inputType="textPassword"
                     android:textColor="#111"
+                    android:backgroundTint="@android:color/black"
                     android:id="@+id/ed_password"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
-<!--            <TextView-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:layout_gravity="right"-->
-<!--                android:layout_marginRight="12dp"-->
-<!--                android:text="Forget your Password?"-->
-<!--                android:textColor="#3f4658"-->
-<!--                android:textSize="14sp"-->
-<!--                tools:ignore="RtlHardcoded" />-->
+            <!--            <TextView-->
+            <!--                android:layout_width="wrap_content"-->
+            <!--                android:layout_height="wrap_content"-->
+            <!--                android:layout_gravity="right"-->
+            <!--                android:layout_marginRight="12dp"-->
+            <!--                android:text="Forget your Password?"-->
+            <!--                android:textColor="#3f4658"-->
+            <!--                android:textSize="14sp"-->
+            <!--                tools:ignore="RtlHardcoded" />-->
 
             <Button
                 android:clickable="true"

@@ -18,9 +18,9 @@
         android:paddingRight="12dp">
 
         <ImageView
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:background="@drawable/logo"/>
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:background="@drawable/dad"/>
 
         <TextView
             android:padding="10dp"
@@ -60,69 +60,69 @@
 
         </LinearLayout>
 
-        <LinearLayout
-            android:id="@+id/profile"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:padding="16dp">
+<!--        <LinearLayout-->
+<!--            android:id="@+id/profile"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:orientation="vertical"-->
+<!--            android:padding="16dp">-->
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-            <ImageView
-                android:src="@drawable/ic_profile"
-                android:layout_width="35dp"
-                android:layout_height="match_parent"/>
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="profile"
-                android:textColor="#000"
-                android:padding="10dp"
-                android:textSize="20sp"/>
-            </LinearLayout>
-<!--            <View-->
+<!--            <LinearLayout-->
 <!--                android:layout_width="match_parent"-->
-<!--                android:visibility="visible"-->
-<!--                android:layout_height="3dp"-->
-<!--                android:background="#BDBBBB"/>-->
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/Password"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:padding="16dp">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-            <ImageView
-                android:src="@drawable/ic_lock_black"
-                android:layout_width="35dp"
-                android:layout_height="match_parent"/>
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Password"
-                android:padding="10dp"
-                android:textColor="#000"
-                android:textSize="20sp">
-            </TextView>
-            </LinearLayout>
-
-<!--            <View-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:orientation="horizontal">-->
+<!--            <ImageView-->
+<!--                android:src="@drawable/ic_profile"-->
+<!--                android:layout_width="35dp"-->
+<!--                android:layout_height="match_parent"/>-->
+<!--            <TextView-->
 <!--                android:layout_width="match_parent"-->
-<!--                android:visibility="visible"-->
-<!--                android:layout_height="3dp"-->
-<!--                android:background="#BDBBBB"/>-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:text="profile"-->
+<!--                android:textColor="#000"-->
+<!--                android:padding="10dp"-->
+<!--                android:textSize="20sp"/>-->
+<!--            </LinearLayout>-->
+<!--&lt;!&ndash;            <View&ndash;&gt;-->
+<!--&lt;!&ndash;                android:layout_width="match_parent"&ndash;&gt;-->
+<!--&lt;!&ndash;                android:visibility="visible"&ndash;&gt;-->
+<!--&lt;!&ndash;                android:layout_height="3dp"&ndash;&gt;-->
+<!--&lt;!&ndash;                android:background="#BDBBBB"/>&ndash;&gt;-->
 
-        </LinearLayout>
+<!--        </LinearLayout>-->
+
+<!--        <LinearLayout-->
+<!--            android:id="@+id/Password"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:orientation="vertical"-->
+<!--            android:padding="16dp">-->
+
+<!--            <LinearLayout-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:orientation="horizontal">-->
+<!--            <ImageView-->
+<!--                android:src="@drawable/ic_lock_black"-->
+<!--                android:layout_width="35dp"-->
+<!--                android:layout_height="match_parent"/>-->
+<!--            <TextView-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:text="Password"-->
+<!--                android:padding="10dp"-->
+<!--                android:textColor="#000"-->
+<!--                android:textSize="20sp">-->
+<!--            </TextView>-->
+<!--            </LinearLayout>-->
+
+<!--&lt;!&ndash;            <View&ndash;&gt;-->
+<!--&lt;!&ndash;                android:layout_width="match_parent"&ndash;&gt;-->
+<!--&lt;!&ndash;                android:visibility="visible"&ndash;&gt;-->
+<!--&lt;!&ndash;                android:layout_height="3dp"&ndash;&gt;-->
+<!--&lt;!&ndash;                android:background="#BDBBBB"/>&ndash;&gt;-->
+
+<!--        </LinearLayout>-->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

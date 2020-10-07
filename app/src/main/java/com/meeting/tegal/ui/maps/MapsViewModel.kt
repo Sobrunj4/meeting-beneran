@@ -17,7 +17,7 @@ class MapsViewModel (private val partnerRepository: PartnerRepository) : ViewMod
 
     fun fetchLatLngPartners(token : String){
         setLoading()
-        partnerRepository.fetchPartners(token, object : ArrayResponse<Partner>{
+        partnerRepository.fetchPartners( object : ArrayResponse<Partner>{
             override fun onSuccess(datas: List<Partner>?) {
                 hideLoading()
                 partners.postValue(datas)
