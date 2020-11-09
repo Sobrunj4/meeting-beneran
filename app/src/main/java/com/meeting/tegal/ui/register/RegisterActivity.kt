@@ -31,9 +31,9 @@ class RegisterActivity : AppCompatActivity() {
             is RegisterState.ShowToast -> toast(it.message)
             is RegisterState.IsLoading -> {
                 if (it.state){
-                    btn_register.disable()
-                }else{
                     btn_register.enable()
+                }else{
+                    btn_register.disable()
                 }
             }
             is RegisterState.Reset -> {
@@ -54,17 +54,17 @@ class RegisterActivity : AppCompatActivity() {
         }
     }
 
-    private fun register()
-    {
+    private fun register() {
         btn_register.setOnClickListener {
             val name = et_name.text.toString().trim()
             val email = et_email.text.toString().trim()
             val password = et_password.text.toString().trim()
             val cPassowrd = et_confirm_password.text.toString().trim()
             val telp = et_telp.text.toString().trim()
+            val uname = et_uname.text.toString().trim()
 
             if (registerViewModel.validate(name, email, password, cPassowrd, telp)){
-                registerViewModel.register(name, email, password, telp)
+                registerViewModel.register(name, email, password, telp, uname)
             }
         }
     }

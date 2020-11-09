@@ -51,7 +51,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="8dp"
                 android:layout_marginTop="20dp"
-                android:text="Email"
+                android:text="Email / uname"
                 android:textColor="#BC3F4658"
                 android:textSize="18dp" />
 
@@ -68,7 +68,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="12dp"
                     android:drawableEnd="@drawable/ic"
-                    android:hint="Masukkan Email Password"
+                    android:hint="Masukkan Email atau username"
                     android:textColor="#111" />
 
             </com.google.android.material.textfield.TextInputLayout>

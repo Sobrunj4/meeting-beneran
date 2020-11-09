@@ -45,6 +45,23 @@ class ApiClient {
 
 interface ApiService{
 
+    @FormUrlEncoded
+    @POST("user/login")
+    fun login(
+        @Field("email") email : String,
+        @Field("password") password : String
+    ) : Call<WrappedResponse<User>>
+
+    @FormUrlEncoded
+    @POST("user/register")
+    fun register(
+        @Field("nama") nama : String,
+        @Field("email") email : String,
+        @Field("password") password : String,
+        @Field("no_hp") no_hp : String,
+        @Field("uname") uname : String
+    ) : Call<WrappedResponse<User>>
+
     @GET("partner")
     fun fetchPartners() : Call<WrappedListResponse<Partner>>
 
@@ -87,22 +104,6 @@ interface ApiService{
         @Field("tanggal_dan_waktu") tanggalDanWaktu : String,
         @Field("lama") lama : String
     ) : Call<WrappedListResponse<MeetingRoom>>
-
-    @FormUrlEncoded
-    @POST("user/login")
-    fun login(
-        @Field("email") email : String,
-        @Field("password") password : String
-    ) : Call<WrappedResponse<User>>
-
-    @FormUrlEncoded
-    @POST("user/register")
-    fun register(
-        @Field("nama") nama : String,
-        @Field("email") email : String,
-        @Field("password") password : String,
-        @Field("no_hp") no_hp : String
-    ) : Call<WrappedResponse<User>>
 
     @GET("user/profile")
     fun profile(

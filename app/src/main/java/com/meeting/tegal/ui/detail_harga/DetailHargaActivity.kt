@@ -58,7 +58,7 @@ class DetailHargaActivity : AppCompatActivity() {
         }
     }
 
-    private fun order(){
+    private fun order() {
         btn_order.setOnClickListener {
             if (isLoggedIn()){
                 val token = Constants.getToken(this@DetailHargaActivity)

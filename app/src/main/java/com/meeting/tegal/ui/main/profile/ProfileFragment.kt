@@ -3,6 +3,7 @@ package com.meeting.tegal.ui.main.profile
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
+import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
 import com.example.meeting.utilities.Constants
 import com.meeting.tegal.R
@@ -20,11 +21,32 @@ class ProfileFragment : Fragment(R.layout.fragment_profile){
 //        Password.setOnClickListener {
 //            startActivity(Intent(activity, PasswordActivity::class.java))
 //        }
-        btn_logout.setOnClickListener {
-            Constants.clearToken(activity!!)
-        startActivity(Intent(activity!!, LoginActivity::class.java))
-        activity!!.finish()
+
+        if (!isLoggedIn()){
+            alertNotLogin("silahkan login dahulu")
+        }
+
+        logout()
     }
 
+    private fun isLoggedIn() = !Constants.getToken(activity!!).equals("UNDEFINED")
+
+    private fun logout(){
+        btn_logout.setOnClickListener {
+            Constants.clearToken(activity!!)
+            startActivity(Intent(activity!!, LoginActivity::class.java))
+            activity!!.finish()
+        }
+    }
+
+    fun alertNotLogin(message: String){
+        AlertDialog.Builder(requireActivity()).apply {
+            setMessage(message)
+            setPositiveButton("ya"){dialogInterface, _ ->
+                startActivity(Intent(requireActivity(), LoginActivity::class.java)
+                    .putExtra("EXPECT_RESULT", true))
+                dialogInterface.dismiss()
+            }
+        }.show()
     }
 }

@@ -35,10 +35,10 @@ class LoginViewModel (private val userRepository: UserRepository): ViewModel(){
             state.value = LoginState.Validate(email = "email tidak boleh kosong")
             return false
         }
-        if (!Constants.isValidEmail(email)){
-            state.value = LoginState.Validate(email = "email tidak valid")
-            return false
-        }
+//        if (!Constants.isValidEmail(email)){
+//            state.value = LoginState.Validate(email = "email tidak valid")
+//            return false
+//        }
 
         if (password.isEmpty()){
             state.value = LoginState.Validate(password = "password tidak boleh kosong")

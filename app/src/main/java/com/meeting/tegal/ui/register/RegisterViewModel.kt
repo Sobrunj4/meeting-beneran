@@ -61,13 +61,12 @@ class RegisterViewModel (private val userRepository: UserRepository) : ViewModel
             state.value = RegisterState.Validate(telp = "no telepon setidaknya 11 sampai 13 karakter")
             return false
         }
-
         return true
     }
 
-    fun register(name : String, email: String, password: String, telp: String){
+    fun register(name : String, email: String, password: String, telp: String, uname : String){
         setLoading()
-        userRepository.register(name, email, password, telp, object : SingleResponse<User>{
+        userRepository.register(name, email, password, telp, uname, object : SingleResponse<User>{
             override fun onSuccess(data: User?) {
                 hideLoading()
                 data?.let { success(it.email!!) }

@@ -13,15 +13,15 @@ import retrofit2.http.HTTP
 interface UserContract {
     fun profile(token: String, listener: SingleResponse<User>)
     fun login(email: String, password: String, listener: SingleResponse<User>)
-    fun register(name : String, email: String, password: String, telp : String, listener: SingleResponse<User>)
+    fun register(name : String, email: String, password: String, telp : String, uname : String, listener: SingleResponse<User>)
 }
 
 class UserRepository (private val api : ApiService) : UserContract {
 
     private val TAG = "UserRep"
 
-    override fun register(name: String, email: String, password: String, telp: String, listener: SingleResponse<User>) {
-        api.register(name, email, password, telp).enqueue(object : Callback<WrappedResponse<User>>{
+    override fun register(name: String, email: String, password: String, telp: String, uname : String, listener: SingleResponse<User>) {
+        api.register(name, email, password, telp, uname).enqueue(object : Callback<WrappedResponse<User>>{
             override fun onFailure(call: Call<WrappedResponse<User>>, t: Throwable) {
                 listener.onFailure(Error(t.message))
             }

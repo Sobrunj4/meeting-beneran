@@ -14,15 +14,23 @@ import com.meeting.tegal.utilities.visible
 import kotlinx.android.synthetic.main.fragment_home.view.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class HomeFragment : Fragment(R.layout.fragment_home) {
+class HomeFragment : Fragment(R.layout.fragment_home), DialogSearch.DialogSearchListener {
 
     private val homeViewModel : HomeViewModel by viewModel()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setUpRecyclerViewPartner()
+        openDialogSearch()
         observe()
         //setUpRecyclerViewPromo()
+    }
+
+    private fun openDialogSearch(){
+        requireView().et_search.setOnClickListener {
+            val dialog = DialogSearch()
+            dialog.show(requireActivity().supportFragmentManager, "dialog search")
+        }
     }
 
     private fun setUpRecyclerViewPartner(){
@@ -74,5 +82,11 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
         super.onResume()
         fetchOwners()
         //fetchPromo()
+    }
+
+    override fun applyTexts(date: String, startTime: String, endTime: String) {
+        println(date)
+        println(startTime)
+        println(endTime)
     }
 }
