@@ -1,11 +1,9 @@
-package com.meeting.tegal.ui.main.home
+package com.meeting.tegal.dialog
 
 import android.annotation.SuppressLint
-import android.app.Activity
 import android.app.DatePickerDialog
 import android.app.Dialog
 import android.app.TimePickerDialog
-import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -14,15 +12,14 @@ import android.view.ViewGroup
 import android.widget.DatePicker
 import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.DialogFragment
-import androidx.fragment.app.Fragment
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.meeting.tegal.R
+import com.meeting.tegal.ui.search.SearchActivity
 import kotlinx.android.synthetic.main.dialog_search.view.*
 import java.util.*
 
 class DialogSearch : DialogFragment(), DatePickerDialog.OnDateSetListener {
 
-    private var listener: DialogSearchListener? = null
     private lateinit var startTime : String
     private lateinit var endTime : String
     private lateinit var date : String
@@ -30,20 +27,18 @@ class DialogSearch : DialogFragment(), DatePickerDialog.OnDateSetListener {
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         dialogView = LayoutInflater.from(requireActivity()).inflate(R.layout.dialog_search, null)
-        val dialog = MaterialAlertDialogBuilder(requireActivity())
+        return MaterialAlertDialogBuilder(requireActivity())
             .setView(dialogView)
             .setTitle("cari")
             .setNegativeButton("cancel"){ d, _ -> d.dismiss() }
-            .setPositiveButton("cari"){dialog, _ ->
-//                val intent = Intent()
-//                intent.putExtra("DATE", date)
-//                intent.putExtra("START_TIME", startTime)
-//                intent.putExtra("END_TIME", endTime)
-//                requireActivity().setResult(Activity.RESULT_OK, intent)
-                //requireActivity().finish()
+            .setPositiveButton("cari"){ dialog, _ ->
+                startActivity(Intent(requireActivity(), SearchActivity::class.java).apply {
+                    putExtra("DATE", date)
+                    putExtra("START_TIME", startTime)
+                    putExtra("END_TIME", endTime)
+                })
                 dialog.dismiss()
             }.create()
-        return dialog
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -127,22 +122,6 @@ class DialogSearch : DialogFragment(), DatePickerDialog.OnDateSetListener {
         val calendar = Calendar.getInstance()
         calendar.set(year, month, dayOfMonth)
         requireView().ed_tanggal.setText("${year}, ${month}, $dayOfMonth")
-        date = "${year}, ${month}, $dayOfMonth"
-    }
-
-    override fun onAttachFragment(childFragment: Fragment) {
-        super.onAttachFragment(childFragment)
-        try {
-            listener = childFragment as DialogSearchListener
-        } catch (e: ClassCastException) {
-            throw ClassCastException(
-                childFragment.toString() +
-                        " must implement ExampleDialogListener"
-            )
-        }
-    }
-
-    interface DialogSearchListener {
-        fun applyTexts(date: String, startTime: String, endTime: String)
+        date = "${year}-${month+1}-$dayOfMonth"
     }
 }

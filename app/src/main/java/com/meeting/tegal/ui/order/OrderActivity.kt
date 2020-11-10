@@ -43,6 +43,7 @@ class OrderActivity : AppCompatActivity(), DatePickerDialog.OnDateSetListener {
                 putExtra("START_TIME", jam_mulai.text.toString().trim())
                 putExtra("END_TIME", jam_selesai.text.toString().trim())
                 putExtra("ROOM", getPassedRoom())
+                putExtra("COMPANY", getPassedCompany())
                 putExtra("FOODS", restrucutureFoods)
             })
         }
@@ -167,9 +168,7 @@ class OrderActivity : AppCompatActivity(), DatePickerDialog.OnDateSetListener {
         super.onActivityResult(requestCode, resultCode, data)
         if (resultCode == Activity.RESULT_OK && requestCode == REQUEST_CODE_PESAN_MAKANAN){
             val foods = data?.getParcelableArrayListExtra<Food>("selected_foods")
-            foods?.let {
-                onSelectFoodsReturn(it)
-            }
+            foods?.let { onSelectFoodsReturn(it) }
             restrucutureFoods = foods!!
         }
     }

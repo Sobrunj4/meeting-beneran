@@ -5,7 +5,6 @@ import com.meeting.tegal.repository.*
 import com.meeting.tegal.ui.available_room.AvailableRoomViewModel
 import com.meeting.tegal.ui.company.CompanyViewModel
 import com.meeting.tegal.ui.detail_harga.DetailHargaViewModel
-import com.meeting.tegal.ui.food_order.SelectFoodActivity
 import com.meeting.tegal.ui.food_order.SelectFoodViewModel
 import com.meeting.tegal.ui.login.LoginViewModel
 import com.meeting.tegal.ui.main.home.HomeViewModel
@@ -14,6 +13,7 @@ import com.meeting.tegal.ui.maps.MapsViewModel
 import com.meeting.tegal.ui.meeting.MeetingViewModel
 import com.meeting.tegal.ui.order.OrderActivityViewModel
 import com.meeting.tegal.ui.register.RegisterViewModel
+import com.meeting.tegal.ui.search.SearchViewModel
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
 import org.koin.androidx.viewmodel.dsl.viewModel
@@ -54,6 +54,7 @@ val viewModelModules = module {
     viewModel { DetailHargaViewModel(get()) }
     viewModel { ShoppingViewModel(get()) }
     viewModel { RegisterViewModel(get()) }
-    viewModel { HomeViewModel(get()) }
+    viewModel { HomeViewModel(get(), get()) }
     viewModel { CompanyViewModel(get()) }
+    viewModel { SearchViewModel(get()) }
 }

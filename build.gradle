@@ -7,8 +7,9 @@ buildscript {
         jcenter()
         mavenCentral()
         maven { url "http://dl.bintray.com/pt-midtrans/maven" }
-        maven { url "https://jitpack.io" }
         maven { url 'https://mapbox.bintray.com/mapbox' }
+        maven { url "https://jitpack.io" }
+
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:3.5.3'
@@ -24,8 +25,8 @@ allprojects {
         jcenter()
         mavenCentral()
         maven { url "http://dl.bintray.com/pt-midtrans/maven" }
-        maven { url "https://jitpack.io" }
         maven { url 'https://mapbox.bintray.com/mapbox' }
+        maven { url "https://jitpack.io" }
     }
 }
 

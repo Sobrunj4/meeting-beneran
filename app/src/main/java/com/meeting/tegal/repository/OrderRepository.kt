@@ -13,31 +13,12 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class OrderRepository (private val api : ApiService) {
-    fun order(token : String, createOrder: CreateOrder, result : (Boolean, Error?)->Unit){
-        val g = GsonBuilder().create()
-        val json = g.toJson(createOrder)
-        println(json)
-        val body = RequestBody.create(MediaType.parse("application/json; charset=utf-8"), json)
-        api.order(token, body).enqueue(object : Callback<WrappedResponse<CreateOrder>>{
-            override fun onFailure(call: Call<WrappedResponse<CreateOrder>>, t: Throwable) {
-                result(false, Error(t.message))
-            }
+interface OrderContract{
+    fun order(token: String, createOrder: CreateOrder, listener : SingleResponse<CreateOrder>)
+    fun orderCancel(token: String, orderId : String, listener: SingleResponse<Order>)
+}
 
-            override fun onResponse(call: Call<WrappedResponse<CreateOrder>>, response: Response<WrappedResponse<CreateOrder>>) {
-                if (response.isSuccessful){
-                    val b = response.body()
-                    if (b?.status!!) {
-                        result(true, null)
-                    }else{
-                        result(false, Error(b.message))
-                    }
-                }else{
-                    result(false, Error(response.message()))
-                }
-            }
-        })
-    }
+class OrderRepository (private val api : ApiService) : OrderContract{
 
     fun getOrderByUser(token: String, result: (List<Order>?, Error?) -> Unit){
         api.getOrderByUser(token).enqueue(object : Callback<WrappedListResponse<Order>>{
@@ -77,6 +58,52 @@ class OrderRepository (private val api : ApiService) {
                     }
                 }else{
                     result(false, Error(response.message()))
+                }
+            }
+
+        })
+    }
+
+    override fun order(token: String, createOrder: CreateOrder, listener: SingleResponse<CreateOrder>) {
+        val g = GsonBuilder().create()
+        val json = g.toJson(createOrder)
+        val body = RequestBody.create(MediaType.parse("application/json; charset=utf-8"), json)
+        api.order(token, body).enqueue(object : Callback<WrappedResponse<CreateOrder>>{
+            override fun onFailure(call: Call<WrappedResponse<CreateOrder>>, t: Throwable) {
+                listener.onFailure(Error(t.message))
+            }
+
+            override fun onResponse(
+                call: Call<WrappedResponse<CreateOrder>>,
+                response: Response<WrappedResponse<CreateOrder>>
+            ) {
+                when{
+                    response.isSuccessful -> {
+                        val b = response.body()
+                        if (b?.status!!) listener.onSuccess(b.data) else listener.onFailure(Error(b.message))
+                    }
+                    else -> listener.onFailure(Error(response.message()))
+                }
+            }
+
+        })
+    }
+
+    override fun orderCancel(token: String, orderId: String, listener: SingleResponse<Order>) {
+        api.orderCancel(token, orderId.toInt()).enqueue(object : Callback<WrappedResponse<Order>>{
+            override fun onFailure(call: Call<WrappedResponse<Order>>, t: Throwable) {
+                listener.onFailure(Error(t.message))
+            }
+
+            override fun onResponse(call: Call<WrappedResponse<Order>>, response: Response<WrappedResponse<Order>>) {
+                when{
+                    response.isSuccessful -> {
+                        val body = response.body()
+                        if (body?.status!!) listener.onSuccess(body.data) else listener.onFailure(
+                            Error(body.message)
+                        )
+                    }
+                    else -> listener.onFailure(Error(response.message()))
                 }
             }
 

@@ -19,6 +19,7 @@ class ShoppingAdapter (private var orders : MutableList<Order>,
                        private var context: Context,
                        private var shoppingViewModel: ShoppingViewModel)
     : RecyclerView.Adapter<ShoppingAdapter.ViewHolder>(){
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         return ViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.item_shooping, parent, false))
     }
@@ -28,7 +29,7 @@ class ShoppingAdapter (private var orders : MutableList<Order>,
     override fun onBindViewHolder(holder: ViewHolder, position: Int) = holder.bind(orders[position], context, shoppingViewModel)
 
     class ViewHolder(itemView : View) : RecyclerView.ViewHolder(itemView){
-        val paymentMidtrans = PaymentMidtrans()
+        private val paymentMidtrans = PaymentMidtrans()
         fun bind(order: Order, context: Context, shoppingViewModel: ShoppingViewModel){
             with(itemView){
                 iv_ruangan.load(order.room!!.foto)
@@ -38,10 +39,11 @@ class ShoppingAdapter (private var orders : MutableList<Order>,
                 tv_total_harga.text = Constants.setToIDR(order.totalPrice!!)
 
                 if (order.verifikasi.equals("2")){
+                    btn_cancel.gone()
                     if (order.status.equals("pending")){
-                        val url_snap = "https://app.sandbox.midtrans.com/snap/v2/vtweb/${order.snap}"
+                        val urlSnap = "https://app.sandbox.midtrans.com/snap/v2/vtweb/${order.snap}"
                         setOnClickListener {
-                            context.startActivity(Intent(Intent.ACTION_VIEW, Uri.parse(url_snap)))
+                            context.startActivity(Intent(Intent.ACTION_VIEW, Uri.parse(urlSnap)))
                         }
                         btn_pay.gone()
                     }else if(order.status.equals("none")){
@@ -52,6 +54,10 @@ class ShoppingAdapter (private var orders : MutableList<Order>,
                         }
                     }
                 }else{
+                    btn_cancel.visible()
+                    btn_cancel.setOnClickListener {
+                        shoppingViewModel.cancel(Constants.getToken(context), order.id.toString())
+                    }
                     btn_pay.gone()
                 }
             }

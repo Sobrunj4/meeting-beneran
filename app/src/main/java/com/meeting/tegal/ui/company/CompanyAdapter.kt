@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import coil.api.load
 import com.example.meeting.models.MeetingRoom
+import com.example.meeting.utilities.Constants
 import com.meeting.tegal.R
 import com.meeting.tegal.ui.detail_meeting.DetailMeetingActivity
 import com.meeting.tegal.utilities.toast
@@ -23,7 +24,7 @@ class CompanyAdapter (private var rooms : MutableList<MeetingRoom>, private var 
             with(itemView){
                 txt_room_name.text = room.nama_tempat
                 txt_room_capacity.text = "Kapasitas : ${room.kapasitas}"
-                txt_room_price.text = "Harga : ${room.harga_sewa}"
+                txt_room_price.text = "Harga : ${Constants.setToIDR(room.harga_sewa!!)}"
                 img_room.load(room.foto)
                 setOnClickListener { companyClickListener.click(room) }
             }

@@ -44,10 +44,7 @@ class MeetingRepository (private val api: ApiService) : MeetingContract {
                 listener.onFailure(Error(t.message))
             }
 
-            override fun onResponse(
-                call: Call<WrappedListResponse<MeetingRoom>>,
-                response: Response<WrappedListResponse<MeetingRoom>>
-            ) {
+            override fun onResponse(call: Call<WrappedListResponse<MeetingRoom>>, response: Response<WrappedListResponse<MeetingRoom>>) {
                 when{
                     response.isSuccessful -> listener.onSuccess(response.body()!!.data)
                     else -> listener.onFailure(Error(response.message()))

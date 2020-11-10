@@ -7,10 +7,8 @@ import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
 import com.example.meeting.utilities.Constants
 import com.meeting.tegal.R
-import com.meeting.tegal.ui.edit_profile.EditProfileActivity
 import com.meeting.tegal.ui.login.LoginActivity
-import com.meeting.tegal.ui.password.PasswordActivity
-import kotlinx.android.synthetic.main.fragment_profile.*
+import kotlinx.android.synthetic.main.fragment_profile.view.*
 
 class ProfileFragment : Fragment(R.layout.fragment_profile){
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -29,17 +27,17 @@ class ProfileFragment : Fragment(R.layout.fragment_profile){
         logout()
     }
 
-    private fun isLoggedIn() = !Constants.getToken(activity!!).equals("UNDEFINED")
+    private fun isLoggedIn() = Constants.getToken(requireActivity()) != "UNDEFINED"
 
     private fun logout(){
-        btn_logout.setOnClickListener {
-            Constants.clearToken(activity!!)
-            startActivity(Intent(activity!!, LoginActivity::class.java))
-            activity!!.finish()
+        requireView().btn_logout.setOnClickListener {
+            Constants.clearToken(requireActivity())
+            startActivity(Intent(requireActivity(), LoginActivity::class.java))
+            requireActivity().finish()
         }
     }
 
-    fun alertNotLogin(message: String){
+    private fun alertNotLogin(message: String){
         AlertDialog.Builder(requireActivity()).apply {
             setMessage(message)
             setPositiveButton("ya"){dialogInterface, _ ->

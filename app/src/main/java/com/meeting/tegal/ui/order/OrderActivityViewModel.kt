@@ -7,18 +7,14 @@ import com.example.meeting.models.Food
 import com.example.meeting.models.User
 import com.example.meeting.utilities.SingleLiveEvent
 import com.meeting.tegal.models.CreateOrder
-import com.meeting.tegal.models.Order
-import com.meeting.tegal.repository.MeetingRepository
 import com.meeting.tegal.repository.OrderRepository
 import com.meeting.tegal.repository.UserRepository
-import com.meeting.tegal.utilities.ArrayResponse
 import com.meeting.tegal.utilities.SingleResponse
 import java.text.SimpleDateFormat
 import java.util.*
 
 class OrderActivityViewModel (private val orderRepository: OrderRepository, private val userRepository: UserRepository) : ViewModel(){
     private val user = MutableLiveData<User>()
-    private val order = MutableLiveData<Order>()
     private val state : SingleLiveEvent<OrderActivityState> = SingleLiveEvent()
     private val selectedFoods = MutableLiveData<List<Food>?>()
 
@@ -68,12 +64,17 @@ class OrderActivityViewModel (private val orderRepository: OrderRepository, priv
 
     fun order(token: String, createOrder : CreateOrder){
         setLoading()
-        orderRepository.order(token, createOrder ){b, error ->
-            error?.let { it.message?.let { message -> toast(message) } }
-            if (b){
-                state.value = OrderActivityState.Success
+        orderRepository.order(token, createOrder, object : SingleResponse<CreateOrder>{
+            override fun onSuccess(data: CreateOrder?) {
+                hideLoading()
+                data?.let { state.value = OrderActivityState.Success }
             }
-        }
+
+            override fun onFailure(err: Error?) {
+                hideLoading()
+                err?.let { toast(it.message.toString()) }
+            }
+        })
     }
 
     fun listenToState() = state

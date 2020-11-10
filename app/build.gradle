@@ -73,8 +73,12 @@ dependencies {
     implementation 'com.midtrans:uikit:1.21.2-SANDBOX'
     //koin di
     implementation 'org.koin:koin-androidx-viewmodel:2.0.1'
-    //implementation 'com.google.android.gms:play-services-maps:17.0.0'
+    //mapbox
     implementation 'com.mapbox.mapboxsdk:mapbox-android-sdk:9.1.0'
     implementation 'com.mapbox.mapboxsdk:mapbox-android-plugin-places-v9:0.12.0'
     implementation 'com.mapbox.mapboxsdk:mapbox-android-plugin-markerview-v9:0.4.0'
+
+    //ui
+    implementation 'com.github.princ-bhardwaj:TextInlineImage-Library:1.0.2'
+
 }

@@ -3,6 +3,7 @@ package com.example.meeting.models
 import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
 import com.meeting.tegal.Partner
+import com.meeting.tegal.models.Promo
 import kotlinx.android.parcel.Parcelize
 
 @Parcelize
@@ -13,5 +14,6 @@ data class MeetingRoom(
     @SerializedName("harga_sewa") var harga_sewa: Int? = null,
     @SerializedName("foto") var foto: String? = null,
     @SerializedName("keterangan") var keterangan: String? = null,
-    @SerializedName("status") var status: Boolean? = null
+    @SerializedName("status") var status: Boolean? = null,
+    @SerializedName("promo") var promo : Promo? = null
 ) : Parcelable

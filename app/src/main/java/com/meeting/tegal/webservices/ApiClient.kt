@@ -65,6 +65,14 @@ interface ApiService{
     @GET("partner")
     fun fetchPartners() : Call<WrappedListResponse<Partner>>
 
+    @FormUrlEncoded
+    @POST("partner/search")
+    fun searchPartners(
+        @Field("date") date : String,
+        @Field("start_time") startTime : String,
+        @Field("end_time") endTime : String
+    ) : Call<WrappedListResponse<Partner>>
+
     @GET("room/promo")
     fun fetchRoomsPromo() : Call<WrappedListResponse<MeetingRoom>>
 
@@ -79,8 +87,23 @@ interface ApiService{
     ) : Call<WrappedListResponse<Food>>
 
 
+    @Headers("Content-Type: application/json")
+    @POST("order")
+    fun order(
+        @Header("Authorization") token : String,
+        @Body body : RequestBody
+    ) : Call<WrappedResponse<CreateOrder>>
 
+    @GET("order/{id}/cancel")
+    fun orderCancel(
+        @Header("Authorization") token : String,
+        @Path("id") orderId : Int
+    ) : Call<WrappedResponse<Order>>
 
+    @GET("order/user")
+    fun getOrderByUser(
+        @Header("Authorization") token : String
+    ) : Call<WrappedListResponse<Order>>
 
 
 
@@ -115,19 +138,6 @@ interface ApiService{
         @Header("Authorization") token : String,
         @Path("id_mitra") id_mitra : Int
     ) : Call<WrappedListResponse<Food>>
-
-
-    @Headers("Content-Type: application/json")
-    @POST("order")
-    fun order(
-        @Header("Authorization") token : String,
-        @Body body : RequestBody
-    ) : Call<WrappedResponse<CreateOrder>>
-
-    @GET("order/user")
-    fun getOrderByUser(
-        @Header("Authorization") token : String
-    ) : Call<WrappedListResponse<Order>>
 
     @FormUrlEncoded
     @POST("order/{id}/update")

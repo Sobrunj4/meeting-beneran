@@ -27,18 +27,26 @@ class DetailHargaActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_detail_harga)
+        setUpRecyclerViewDetailHarga()
+        setField()
+        detailHargaViewModel.listenToState().observer(this, Observer { handleUI(it) })
+        updateRecyclerViewDetailHarga()
+        order()
+    }
+
+    private fun setUpRecyclerViewDetailHarga(){
         rv_detail_harga.apply {
             adapter = DetailHargaAdapter(mutableListOf(), this@DetailHargaActivity)
             layoutManager = LinearLayoutManager(this@DetailHargaActivity)
         }
-        setUI()
-        detailHargaViewModel.listenToState().observer(this, Observer { handleUI(it) })
+    }
+
+    private fun updateRecyclerViewDetailHarga(){
         rv_detail_harga.adapter?.let {adapter ->
             if (adapter is DetailHargaAdapter) {
                 adapter.changelist(getPassedFoodsSelected()!!)
             }
         }
-        order()
     }
 
     private fun handleUI(it : DetailHargaState){
@@ -71,7 +79,7 @@ class DetailHargaActivity : AppCompatActivity() {
                     id_partner = getPassedCompany()?.id,
                     foods = getPassedFoodsSelected()!!
                 )
-                detailHargaViewModel.order(Constants.getToken(this@DetailHargaActivity), order)
+                detailHargaViewModel.order(token, order)
             }else{
                 alertNotLogin("silahkan login dahulu")
             }
@@ -89,7 +97,7 @@ class DetailHargaActivity : AppCompatActivity() {
         }.show()
     }
 
-    private fun setUI() {
+    private fun setField() {
         txt_harga_ruangan.text = Constants.setToIDR(getPassedRoom()?.harga_sewa!!)
         val priceFoods = getPassedFoodsSelected()?.sumBy { it.price!! * it.qty!! }
         txt_harga_makanan.text = Constants.setToIDR(priceFoods!!)
