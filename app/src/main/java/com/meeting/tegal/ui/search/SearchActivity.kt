@@ -1,38 +1,38 @@
 package com.meeting.tegal.ui.search
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.LinearLayoutManager
 import com.meeting.tegal.Partner
 import com.meeting.tegal.R
-import com.meeting.tegal.dialog.DialogSearch
+import com.meeting.tegal.ui.company.CompanyActivity
 import com.meeting.tegal.utilities.gone
 import com.meeting.tegal.utilities.toast
 import com.meeting.tegal.utilities.visible
 import kotlinx.android.synthetic.main.activity_search.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class SearchActivity : AppCompatActivity() {
+class SearchActivity : AppCompatActivity(), SearchClickListener {
 
     private val searchViewModel : SearchViewModel by viewModel()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_search)
-        openDialogSearch()
+        //openDialogSearch()
         setUpRecyclerView()
         observe()
         searchPartners()
     }
 
-    private fun openDialogSearch(){
-        et_search.setOnClickListener {
-            val dialog = DialogSearch()
-            dialog.show(supportFragmentManager, "dialog search")
-        }
-    }
+//    private fun openDialogSearch(){
+//        et_search.setOnClickListener {
+//            val dialog = DialogSearch()
+//            dialog.show(supportFragmentManager, "dialog search")
+//        }
+//    }
 
     private fun setUpRecyclerView(){
         recycler_view.apply {
@@ -75,5 +75,15 @@ class SearchActivity : AppCompatActivity() {
 
     private fun handleLoading(b: Boolean) {
         if (b) loading.visible() else loading.gone()
+    }
+
+    override fun click(partner: Partner) {
+        startActivity(Intent(this@SearchActivity, CompanyActivity::class.java).apply {
+            putExtra("COMPANY", partner)
+            putExtra("DATE", getPassedDate())
+            putExtra("START_TIME", getPassedStartTime())
+            putExtra("END_TIME", getPassedEndTime())
+            putExtra("IS_SEARCH", true)
+        })
     }
 }

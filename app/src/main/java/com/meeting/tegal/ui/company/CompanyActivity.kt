@@ -62,6 +62,10 @@ class CompanyActivity : AppCompatActivity(), CompanyClickListener {
 
     private fun fetchRoomsByCompany() = companyViewModel.fetchRoomsByPartner(getPassedCompany()?.id.toString())
     private fun getPassedCompany() = intent.getParcelableExtra<Partner>("COMPANY")
+    private fun getPassedDate() = intent.getStringExtra("DATE")
+    private fun getPassedStartTime() = intent.getStringExtra("START_TIME")
+    private fun getPassedEndTime() = intent.getStringExtra("END_TIME")
+    private fun getPassedIsSearch() = intent.getBooleanExtra("IS_SEARCH", false)
 
     override fun onResume() {
         super.onResume()
@@ -72,6 +76,12 @@ class CompanyActivity : AppCompatActivity(), CompanyClickListener {
         startActivity(Intent(this, DetailMeetingActivity::class.java).apply {
             putExtra("ROOM", room)
             putExtra("COMPANY", getPassedCompany())
+            if (getPassedIsSearch()){
+                putExtra("DATE", getPassedDate())
+                putExtra("START_TIME", getPassedStartTime())
+                putExtra("END_TIME", getPassedEndTime())
+                putExtra("IS_SEARCH", true)
+            }
         })
     }
 }

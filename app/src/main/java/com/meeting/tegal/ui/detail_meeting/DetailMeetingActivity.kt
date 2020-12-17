@@ -29,9 +29,19 @@ class DetailMeetingActivity : AppCompatActivity() {
             startActivity(Intent(this@DetailMeetingActivity, OrderActivity::class.java).apply {
                 putExtra("ROOM", getPassedMeeting())
                 putExtra("COMPANY", getPassedCompany())
+                if (getPassedIsSearch()){
+                    putExtra("DATE", getPassedDate())
+                    putExtra("START_TIME", getPassedStartTime())
+                    putExtra("END_TIME", getPassedEndTime())
+                    putExtra("IS_SEARCH", true)
+                }
         }) }
     }
 
     private fun getPassedMeeting() = intent.getParcelableExtra<MeetingRoom>("ROOM")
     private fun getPassedCompany() = intent.getParcelableExtra<Partner>("COMPANY")
+    private fun getPassedDate() = intent.getStringExtra("DATE")
+    private fun getPassedStartTime() = intent.getStringExtra("START_TIME")
+    private fun getPassedEndTime() = intent.getStringExtra("END_TIME")
+    private fun getPassedIsSearch() = intent.getBooleanExtra("IS_SEARCH", false)
 }

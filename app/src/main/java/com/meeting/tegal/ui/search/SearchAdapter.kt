@@ -11,18 +11,19 @@ import com.meeting.tegal.R
 import com.meeting.tegal.ui.company.CompanyActivity
 import kotlinx.android.synthetic.main.item_company.view.*
 
-class SearchAdapter (private var partners : MutableList<Partner>, private var context: Context)
+class SearchAdapter (private var partners : MutableList<Partner>, private val searchClickListener: SearchClickListener)
     : RecyclerView.Adapter<SearchAdapter.ViewHolder>(){
 
     inner class ViewHolder(itemView : View) : RecyclerView.ViewHolder(itemView){
-        fun bind(partner: Partner, context: Context){
+        fun bind(partner: Partner, searchClickListener: SearchClickListener){
             with(itemView){
                 txt_company_name.text = partner.nama_mitra
                 txt_company_address.text = partner.alamat
                 setOnClickListener {
-                    context.startActivity(Intent(context, CompanyActivity::class.java).apply {
-                        putExtra("COMPANY", partner)
-                    })
+                    searchClickListener.click(partner)
+//                    context.startActivity(Intent(context, CompanyActivity::class.java).apply {
+//                        putExtra("COMPANY", partner)
+//                    });
                 }
             }
         }
@@ -40,5 +41,5 @@ class SearchAdapter (private var partners : MutableList<Partner>, private var co
 
     override fun getItemCount(): Int = partners.size
 
-    override fun onBindViewHolder(holder: ViewHolder, position: Int) = holder.bind(partners[position], context)
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) = holder.bind(partners[position], searchClickListener)
 }
