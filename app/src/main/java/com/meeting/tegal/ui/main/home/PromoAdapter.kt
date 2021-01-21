@@ -2,14 +2,17 @@ package com.meeting.tegal.ui.main.home
 
 import android.annotation.SuppressLint
 import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import coil.api.load
 import com.example.meeting.models.MeetingRoom
 import com.example.meeting.utilities.Constants
 import com.meeting.tegal.R
+import com.meeting.tegal.ui.detail_meeting.DetailMeetingActivity
 import kotlinx.android.synthetic.main.item_promo.view.*
 
 class PromoAdapter (private var rooms : MutableList<MeetingRoom>, private var context: Context)
@@ -23,6 +26,12 @@ class PromoAdapter (private var rooms : MutableList<MeetingRoom>, private var co
                 txt_price_promo.text = Constants.setToIDR(room.promo?.promo_price!!)
                 txt_room_name.text = room.nama_tempat
                 txt_price.text = Constants.setToIDR(room.harga_sewa!!)
+                img_room.load(room.foto)
+                setOnClickListener {
+                    context.startActivity(Intent(context, DetailMeetingActivity::class.java).apply {
+                        putExtra("ROOM", room)
+                    })
+                }
                 //price.formatSpan(78, 92, RichTextView.FormatType.STRIKETHROUGH)
             }
         }

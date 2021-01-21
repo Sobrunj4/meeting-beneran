@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import coil.api.load
 import com.meeting.tegal.Partner
 import com.meeting.tegal.R
 import com.meeting.tegal.ui.company.CompanyActivity
@@ -19,6 +20,7 @@ class SearchAdapter (private var partners : MutableList<Partner>, private val se
             with(itemView){
                 txt_company_name.text = partner.nama_mitra
                 txt_company_address.text = partner.alamat
+                img_company.load(partner.image)
                 setOnClickListener {
                     searchClickListener.click(partner)
 //                    context.startActivity(Intent(context, CompanyActivity::class.java).apply {

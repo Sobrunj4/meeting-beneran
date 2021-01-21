@@ -28,6 +28,7 @@ class HomeAdapter (private var partners : MutableList<Partner>, private var cont
             with(itemView){
                 txt_company_name.text = partner.nama_mitra
                 txt_company_address.text = partner.alamat
+                img_company.load(partner.image)
                 setOnClickListener {
                     context.startActivity(Intent(context, CompanyActivity::class.java).apply {
                         putExtra("COMPANY", partner)

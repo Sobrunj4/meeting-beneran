@@ -1,13 +1,16 @@
 package com.meeting.tegal.ui.main.shopping
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
+import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.meeting.utilities.Constants
 import com.meeting.tegal.R
 import com.meeting.tegal.models.Order
+import com.meeting.tegal.ui.login.LoginActivity
 import com.meeting.tegal.utilities.gone
 import com.meeting.tegal.utilities.toast
 import com.meeting.tegal.utilities.visible
@@ -17,10 +20,30 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 class ShoppingFragment : Fragment(R.layout.fragment_shopping){
     private val shoppingViewModel : ShoppingViewModel by viewModel()
 
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setUpRecyclerView()
-        observe()
+
+        if (!isLoggedIn()){
+            alertNotLogin("silahkan login dahulu")
+        }else{
+            observe()
+        }
+    }
+
+    private fun isLoggedIn() = Constants.getToken(requireActivity()) != "UNDEFINED"
+
+
+    private fun alertNotLogin(message: String){
+        AlertDialog.Builder(requireActivity()).apply {
+            setMessage(message)
+            setPositiveButton("ya"){dialogInterface, _ ->
+                startActivity(Intent(requireActivity(), LoginActivity::class.java)
+                    .putExtra("EXPECT_RESULT", true))
+                dialogInterface.dismiss()
+            }
+        }.show()
     }
 
     private fun observe(){

@@ -21,10 +21,14 @@ class DetailMeetingActivity : AppCompatActivity() {
 
     private fun setUpDetailRoom() {
         tv_nama_ruangan.text = getPassedMeeting()?.nama_tempat
-        tv_harga1.text = Constants.setToIDR(getPassedMeeting()?.harga_sewa!!)
+        getPassedMeeting()?.promo?.let {
+            tv_harga1.text = Constants.setToIDR(it.promo_price!!)
+        } ?:kotlin.run {
+            tv_harga1.text = Constants.setToIDR(getPassedMeeting()?.harga_sewa!!)
+        }
         tv_keterangan.text = getPassedMeeting()?.keterangan
         //tv_fasilitas1.text = getPassedMeeting()?.mitra!!.makanans.joinToString { makanan -> makanan.nama!!  }
-        iv_ruangan.load("https://meeting-ning-tegal.herokuapp.com/uploads/ruangmeeting/"+getPassedMeeting()?.foto)
+        iv_ruangan.load(getPassedMeeting()?.foto)
         btn_pesan_sekarang.setOnClickListener {
             startActivity(Intent(this@DetailMeetingActivity, OrderActivity::class.java).apply {
                 putExtra("ROOM", getPassedMeeting())
